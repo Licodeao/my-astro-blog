@@ -1,0 +1,55 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import type { string } from "astro/zod";
+
+const articlesByYear = {};
+
+(await getCollection("articles")).forEach((airticle) => {
+  const publishYear = new Date(airticle.data.publishDate).getFullYear();
+
+  if (!articlesByYear[publishYear]) {
+    articlesByYear[publishYear] = [];
+  }
+
+  articlesByYear[publishYear].push(airticle);
+});
+
+const articlesByYearArray = Object.entries(articlesByYear).reverse();
+---
+
+<BaseLayout title="归档" description="Articles Archiving">
+  <div class="stack gap-20">
+    <main class="wrapper stack gap-8">
+      <Hero title="归档" tagline="留下时光的痕迹。" align="start" />
+      <!-- <Grid variant="offset"> -->
+      <ul style="padding:0 !important;">
+        {
+          articlesByYearArray.map(([key, value]: [string, any]) => (
+            <>
+              <h2>{key}</h2>
+              {value
+                .sort((a, b) => b.data.publishDate - a.data.publishDate)
+                .map((article) => (
+                  <li style="margin: 10px 0;">
+                    <div style="display:flex; just-content:space-around; align-items:center; gap:10px;">
+                      <span style="width:100px;background-color:#666; border-radius:5px;text-align:center; color:#fff;">
+                        {new Date(
+                          article.data.publishDate
+                        ).toLocaleDateString()}
+                      </span>
+                      <a href={`/articles/${article.slug}`}>
+                        {article.data.title}
+                      </a>
+                    </div>
+                  </li>
+                ))}
+            </>
+          ))
+        }
+      </ul>
+      <!-- </Grid> -->
+    </main>
+  </div>
+</BaseLayout>

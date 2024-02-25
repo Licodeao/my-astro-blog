@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectsPreview from "../components/ProjectsPreview.astro";
+import Hero from "../components/Hero.astro";
+import Grid from "../components/Grid.astro";
+
+const projects = await getCollection("projects");
+---
+
+<BaseLayout title="我的项目 | Licodeao" description="Licodeao's projects">
+  <div class="stack gap-20">
+    <main class="wrapper stack gap-8">
+      <Hero title="项目列表" tagline="一些瞎琢磨的小玩意 🧸" align="start" />
+      <Grid variant="offset">
+        {
+          projects.map((project) => (
+            <li>
+              <ProjectsPreview projects={project} />
+            </li>
+          ))
+        }
+      </Grid>
+    </main>
+  </div>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
+import Hero from "../components/Hero.astro";
+import Grid from "../components/Grid.astro";
+
+const projects = (await getCollection("articles")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="我的文章 | Licodeao"
+  description="Learn about Licodeao's articles & life."
+>
+  <div class="stack gap-20">
+    <main class="wrapper stack gap-8">
+      <Hero title="文章列表" tagline="记录世界，记录自己。" align="start" />
+      <Grid variant="offset">
+        {
+          projects.map((project) => (
+            <li>
+              <PortfolioPreview project={project} />
+            </li>
+          ))
+        }
+      </Grid>
+    </main>
+  </div>
+</BaseLayout>

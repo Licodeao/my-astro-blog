@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<BaseLayout title="关于我 | Licodeao" description="关于 Licodeao">
+  <div class="stack gap-20">
+    <main class="wrapper about">
+      <Hero title="关于我" tagline="Yoo 👋🏻 我是 Licodeao✍">
+        <span style="font-size:10px; text-decoration:underline;"
+          >This is my Bento 👇 , you can click it to see my Bento 🍱.</span
+        >
+        <a href="https://bento.me/licodeao" target="__blank">
+          <img
+            style="margin:0 !important;"
+            width="1553"
+            height="873"
+            src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/%E6%9C%AA%E5%91%BD%E5%90%8D%204.png"
+            alt="Licodao's Bento"
+          />
+        </a>
+      </Hero>
+
+      <section>
+        <h2 class="section-title">我是谁 🤔</h2>
+        <div class="content">
+          <p>
+            我是 Licodeao，目前是一名实习生，Base 深圳。喜欢前端，尤其极度热爱
+            ReactJS，未来会成为一名独立开发者。
+          </p>
+          <p></p>
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">目前专注于 🎯</h2>
+        <div
+          class="content"
+          style="display: flex; justify-content: flex-start; gap: 2rem;"
+        >
+          <img
+            src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/vue.svg"
+            width="60px"
+            height="60px"
+            style="margin:0 !important; padding:15px;"
+          />
+          <img
+            src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/react.svg"
+            width="60px"
+            height="60px"
+            style="margin:0 !important; padding:15px;"
+          />
+          <img
+            src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs.svg"
+            width="60px"
+            height="60px"
+            style="margin:0 !important; padding:15px;"
+          />
+          <img
+            src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/next-js.svg"
+            width="60px"
+            height="60px"
+            style="margin:0 !important; padding:15px;"
+          />
+          <img
+            src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/rust.svg"
+            width="60px"
+            height="60px"
+            style="margin:0 !important; padding:15px;"
+          />
+        </div>
+      </section>
+      <section>
+        <h2 class="section-title">爱好 🥰</h2>
+        <div class="content">
+          <ul style="padding:0 !important;">
+            <li style="text-decoration: underline;">喜欢 Coding</li>
+            <li style="text-decoration: underline;">爱看书</li>
+            <li style="text-decoration: underline;">爱瞎倒腾</li>
+            <li style="text-decoration: underline;">理想主义者</li>
+            <li style="text-decoration: underline;">未来会成为独立开发者</li>
+            <li style="text-decoration: underline;">业余 UI/UX 爱好者</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <ContactCTA />
+  </div>
+</BaseLayout>
+
+<style>
+  .about {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  img {
+    margin-top: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--gray-200);
+  }
+
+  .section-title {
+    grid-column-start: 1;
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+  }
+
+  .content {
+    grid-column: 2 / 4;
+  }
+
+  .content :global(a) {
+    text-decoration: 1px solid underline transparent;
+    text-underline-offset: 0.25em;
+    transition: text-decoration-color var(--theme-transition);
+  }
+
+  .content :global(a:hover),
+  .content :global(a:focus) {
+    text-decoration-color: currentColor;
+  }
+
+  @media (min-width: 50em) {
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 60% 1fr;
+    }
+
+    .about > :global(:first-child) {
+      grid-column-start: 2;
+    }
+
+    section {
+      display: contents;
+      font-size: var(--text-lg);
+    }
+  }
+</style>

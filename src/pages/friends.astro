@@ -1,0 +1,199 @@
+---
+import Grid from "../components/Grid.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+
+interface friendsDataType {
+  friendName: string;
+  friendAvatar: string;
+  friendWebSiteLink: string;
+  friendDescription: string;
+}
+
+const friendsData: friendsDataType[] = [
+  {
+    friendName: "7gugu",
+    friendAvatar: "https://avatars.githubusercontent.com/u/8674852?v=4",
+    friendWebSiteLink: "https://7gugu.com/",
+    friendDescription: "鹅厂师兄",
+  },
+  {
+    friendName: "Simon He",
+    friendAvatar: "https://avatars.githubusercontent.com/u/57086651?v=4",
+    friendWebSiteLink: "https://simonme.netlify.app/",
+    friendDescription: "unocss 和 vue vine 核心成员",
+  },
+  {
+    friendName: "愧怍",
+    friendAvatar: "https://kuizuo.cn/img/logo.png",
+    friendWebSiteLink: "https://kuizuo.cn",
+    friendDescription: "道阻且长，行则将至",
+  },
+  {
+    friendName: "liruifengv",
+    friendAvatar: "https://avatars.githubusercontent.com/u/25167721?v=4",
+    friendWebSiteLink: "https://liruifengv.com/",
+    friendDescription: "Astro🚀 维护者/大佬",
+  },
+];
+---
+
+<BaseLayout>
+  <section class="section with-background bg-variant">
+    <header class="section-header stack gap-2 lg:gap-4">
+      <h3>友情链接 🔗</h3>
+      <p>这里都是 Licodeao 的朋友们，他们都是优秀的开发者，值得一看。</p>
+    </header>
+
+    <div class="gallery">
+      <Grid variant="small">
+        {
+          friendsData.map((friend) => (
+            <li
+              class="mention-card"
+              style="cursor:pointer;"
+              data-link={friend.friendWebSiteLink}
+            >
+              <div
+                style="display:flex; flex-direction:row;justify-content:space-around;
+                align-items:center; gap:1rem; padding:1rem;"
+              >
+                <img
+                  src={friend.friendAvatar}
+                  alt="avatar"
+                  style="width:25% !important; height:25% !important;border-radius: 1.3rem; flex:1;"
+                />
+                <div style="display:flex; flex-direction:column; gap:1rem; align-items:center; flex:2;">
+                  <p style="font-size:20px; font-weight:bolder;">
+                    {friend.friendName}
+                  </p>
+                  <span style="display:flex; flex-wrap:wrap;">
+                    {friend.friendDescription}
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </Grid>
+    </div>
+  </section>
+  <ContactCTA />
+</BaseLayout>
+
+<script>
+  const cardLis = document.querySelectorAll("li.mention-card");
+
+  if (cardLis) {
+    cardLis.forEach((card) => {
+      const link = card.getAttribute("data-link") as string;
+      card.addEventListener("click", () => {
+        window.open(link, "_blank");
+      });
+    });
+  }
+</script>
+
+<style>
+  .section {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 5rem;
+  }
+
+  .with-background {
+    position: relative;
+  }
+
+  .with-background::before {
+    --hero-bg: var(--bg-image-subtle-2);
+
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    left: 50%;
+    width: 100vw;
+    aspect-ratio: calc(2.25 / var(--bg-scale));
+    top: 0;
+    transform: translateY(-75%) translateX(-50%);
+    background:
+      url("/assets/backgrounds/noise.png") top center/220px repeat,
+      var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+      var(--gray-999);
+    background-blend-mode: overlay, normal, normal, normal;
+    mix-blend-mode: var(--bg-blend-mode);
+    z-index: -1;
+  }
+
+  .with-background.bg-variant::before {
+    --hero-bg: var(--bg-image-subtle-1);
+  }
+
+  .section-header {
+    justify-self: center;
+    text-align: center;
+    max-width: 50ch;
+    font-size: var(--text-md);
+    color: var(--gray-300);
+  }
+
+  .section-header h3 {
+    font-size: var(--text-2xl);
+  }
+
+  @media (min-width: 50em) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+      gap: 5rem;
+    }
+
+    .section.with-cta {
+      grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
+    }
+
+    .section-header {
+      grid-area: header;
+      font-size: var(--text-lg);
+    }
+
+    .section-header h3 {
+      font-size: var(--text-4xl);
+    }
+
+    .with-cta .section-header {
+      justify-self: flex-start;
+      text-align: left;
+    }
+
+    .gallery {
+      grid-area: gallery;
+    }
+
+    .cta {
+      grid-area: cta;
+    }
+  }
+
+  /* ====================================================== */
+
+  .mention-card {
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    color: var(--gray-300);
+    background: var(--gradient-subtle);
+    box-shadow: var(--shadow-sm);
+  }
+
+  @media (min-width: 50em) {
+    .mention-card {
+      border-radius: 1.5rem;
+      height: 9.5rem;
+    }
+  }
+</style>

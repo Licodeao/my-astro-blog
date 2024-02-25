@@ -1,0 +1,480 @@
+/* Global variables */
+:root {
+	/* Colors */
+	--gray-0        : #090b11;
+	--gray-50       : #141925;
+	--gray-100      : #283044;
+	--gray-200      : #3d4663;
+	--gray-300      : #505d84;
+	--gray-400      : #6474a2;
+	--gray-500      : #8490b5;
+	--gray-600      : #a3acc8;
+	--gray-700      : #c3cadb;
+	--gray-800      : #e3e6ee;
+	--gray-900      : #f3f4f7;
+	--gray-999-basis: 0, 0%, 100%;
+	--gray-999_40   : hsla(var(--gray-999-basis), 0.4);
+	--gray-999      : #ffffff;
+
+	--accent-light         : #c561f6;
+	--accent-regular       : #7611a6;
+	--accent-dark          : #1c0056;
+	--accent-overlay       : hsla(280, 89%, 67%, 0.33);
+	--accent-subtle-overlay: var(--accent-overlay);
+	--accent-text-over     : var(--gray-999);
+
+	--link-color: var(--accent-regular);
+
+	/* Gradients */
+	--gradient-stop-1: var(--accent-light);
+	--gradient-stop-2: var(--accent-regular);
+	--gradient-stop-3: var(--accent-dark);
+	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 150%);
+	--gradient-accent: linear-gradient(150deg,
+			var(--gradient-stop-1),
+			var(--gradient-stop-2),
+			var(--gradient-stop-3));
+	--gradient-accent-orange: linear-gradient(150deg,
+			#ca7879,
+			var(--accent-regular),
+			var(--accent-dark));
+	--gradient-stroke: linear-gradient(180deg, var(--gray-900), var(--gray-700));
+
+	/* Shadows */
+	--shadow-sm: 0px 6px 3px rgba(9, 11, 17, 0.01), 0px 4px 2px rgba(9, 11, 17, 0.01),
+		0px 2px 2px rgba(9, 11, 17, 0.02), 0px 0px 1px rgba(9, 11, 17, 0.03);
+	--shadow-md: 0px 28px 11px rgba(9, 11, 17, 0.01), 0px 16px 10px rgba(9, 11, 17, 0.03),
+		0px 7px 7px rgba(9, 11, 17, 0.05), 0px 2px 4px rgba(9, 11, 17, 0.06);
+	--shadow-lg: 0px 62px 25px rgba(9, 11, 17, 0.01), 0px 35px 21px rgba(9, 11, 17, 0.05),
+		0px 16px 16px rgba(9, 11, 17, 0.1), 0px 4px 9px rgba(9, 11, 17, 0.12);
+
+	/* Text Sizes */
+	--text-sm  : 0.875rem;
+	--text-base: 1rem;
+	--text-md  : 1.125rem;
+	--text-lg  : 1.25rem;
+	--text-xl  : 1.625rem;
+	--text-2xl : 2.125rem;
+	--text-3xl : 2.625rem;
+	--text-4xl : 3.5rem;
+	--text-5xl : 4.5rem;
+
+	/* Fonts */
+	--font-system: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	--font-body : 'Public Sans', var(--font-system);
+	--font-brand: Rubik, var(--font-system);
+
+	/* Transitions */
+	--theme-transition: 0.2s ease-in-out;
+}
+
+:root.theme-dark {
+	--gray-0        : #ffffff;
+	--gray-50       : #f3f4f7;
+	--gray-100      : #e3e6ee;
+	--gray-200      : #c3cadb;
+	--gray-300      : #a3acc8;
+	--gray-400      : #8490b5;
+	--gray-500      : #6474a2;
+	--gray-600      : #505d84;
+	--gray-700      : #3d4663;
+	--gray-800      : #283044;
+	--gray-900      : #141925;
+	--gray-999-basis: 225, 31%, 5%;
+	--gray-999      : #090b11;
+
+	--accent-light         : #1c0056;
+	--accent-regular       : #7611a6;
+	--accent-dark          : #c561f6;
+	--accent-overlay       : hsla(280, 89%, 67%, 0.33);
+	--accent-subtle-overlay: hsla(281, 81%, 36%, 0.33);
+	--accent-text-over     : var(--gray-0);
+
+	--link-color: var(--accent-dark);
+
+	--gradient-stop-1: #4c11c6;
+	--gradient-subtle: linear-gradient(150deg, var(--gray-900) 19%, var(--gray-999) 81%);
+	--gradient-accent-orange: linear-gradient(150deg,
+			#ca7879,
+			var(--accent-regular),
+			var(--accent-light));
+	--gradient-stroke: linear-gradient(180deg, var(--gray-600), var(--gray-800));
+
+	--shadow-sm: 0px 6px 3px rgba(255, 255, 255, 0.01), 0px 4px 2px rgba(255, 255, 255, 0.01),
+		0px 2px 2px rgba(255, 255, 255, 0.02), 0px 0px 1px rgba(255, 255, 255, 0.03);
+	--shadow-md: 0px 28px 11px rgba(255, 255, 255, 0.01), 0px 16px 10px rgba(255, 255, 255, 0.03),
+		0px 7px 7px rgba(255, 255, 255, 0.05), 0px 2px 4px rgba(255, 255, 255, 0.06);
+	--shadow-lg: 0px 62px 25px rgba(255, 255, 255, 0.01), 0px 35px 21px rgba(255, 255, 255, 0.05),
+		0px 16px 16px rgba(255, 255, 255, 0.1), 0px 4px 9px rgba(255, 255, 255, 0.12);
+}
+
+html,
+body {
+	min-height: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	background-color      : var(--gray-999);
+	color                 : var(--gray-200);
+	font-family           : var(--font-body);
+	-webkit-font-smoothing: antialiased;
+	line-height           : 1.5;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin    : 0;
+}
+
+img {
+	max-width: 100%;
+	height   : auto;
+}
+
+a {
+	color: var(--link-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	line-height: 1.1;
+	font-family: var(--font-brand);
+	font-weight: 600;
+	color      : var(--gray-100);
+}
+
+h1 {
+	font-size: var(--text-5xl);
+}
+
+h2 {
+	font-size: var(--text-4xl);
+}
+
+h3 {
+	font-size: var(--text-3xl);
+}
+
+h4 {
+	font-size: var(--text-2xl);
+}
+
+h5 {
+	font-size: var(--text-xl);
+}
+
+/* Utilities */
+
+.sr-only {
+	position    : absolute;
+	width       : 1px;
+	height      : 1px;
+	padding     : 0;
+	margin      : -1px;
+	overflow    : hidden;
+	clip        : rect(0, 0, 0, 0);
+	white-space : nowrap;
+	border-width: 0;
+}
+
+.wrapper {
+	width         : 100%;
+	max-width     : 83rem;
+	margin-inline : auto;
+	padding-inline: 1.5rem;
+}
+
+.stack {
+	display       : flex;
+	flex-direction: column;
+}
+
+.gap-2 {
+	gap: 0.5rem;
+}
+
+.gap-4 {
+	gap: 1rem;
+}
+
+.gap-8 {
+	gap: 2rem;
+}
+
+.gap-10 {
+	gap: 2.5rem;
+}
+
+.gap-15 {
+	gap: 3.75rem;
+}
+
+.gap-20 {
+	gap: 5rem;
+}
+
+.gap-30 {
+	gap: 7.5rem;
+}
+
+.gap-48 {
+	gap: 12rem;
+}
+
+@media (min-width: 50em) {
+	.lg\:gap-2 {
+		gap: 0.5rem;
+	}
+
+	.lg\:gap-4 {
+		gap: 1rem;
+	}
+
+	.lg\:gap-8 {
+		gap: 2rem;
+	}
+
+	.lg\:gap-10 {
+		gap: 2.5rem;
+	}
+
+	.lg\:gap-15 {
+		gap: 3.75rem;
+	}
+
+	.lg\:gap-20 {
+		gap: 5rem;
+	}
+
+	.lg\:gap-30 {
+		gap: 7.5rem;
+	}
+
+	.lg\:gap-48 {
+		gap: 12rem;
+	}
+}
+
+[data-rehype-pretty-code-figure] {
+	position: relative;
+}
+
+[data-rehype-pretty-code-title] {
+	margin-top             : 0;
+	display                : inline-flex;
+	height                 : 3rem;
+	/* 设置高度 */
+	align-items            : center;
+	/* 垂直居中 */
+	border-top-left-radius : 0.375rem;
+	/* 设置圆角 */
+	border-top-right-radius: 0.375rem;
+	/* 设置圆角 */
+	border-top-width       : 0.125rem;
+	/* 设置边框宽度 */
+	border-top-color       : #5c6ac4;
+	/* 设置边框颜色 */
+	background-color       : #292C33;
+	/* 设置背景颜色 */
+	padding-left           : 1rem;
+	/* 设置内边距 */
+	padding-right          : 1rem;
+	/* 设置内边距 */
+	font-size              : 0.875rem;
+	/* 设置字体大小 */
+	color                  : white;
+	/* 设置文字颜色 */
+}
+
+[data-rehype-pretty-code-title]+pre {
+	border-top-left-radius: 0;
+	/* 移除圆角 */
+}
+
+pre {
+	margin-left    : auto;
+	margin-right   : auto;
+	overflow       : auto;
+	border-radius  : 0.375rem;
+	/* 设置圆角 */
+	padding        : 1rem;
+	/* 设置内边距 */
+	scrollbar-width: thin;
+	/* 设置滚动条宽度 */
+	scrollbar-color: #cbd5e0 #a0aec0;
+	/* 设置滚动条颜色 */
+}
+
+pre [data-line] {
+	padding-left: 1.5rem;
+	/* 设置左内边距 */
+}
+
+pre [data-highlighted-line] {
+	background-color: rgba(255, 255, 255, 0.1);
+	/* 设置高亮行的背景颜色 */
+}
+
+pre [data-highlighted-chars] {
+	border-radius: 0.375rem;
+	/* 设置圆角 */
+	padding      : 0.25rem;
+	/* 设置内边距 */
+}
+
+mark {
+	background-color: #2d3748;
+	/* 设置标记的背景颜色 */
+	color           : inherit;
+	/* 继承文字颜色 */
+}
+
+code {
+	font-size    : 1rem;
+	/* 设置字体大小 */
+	line-height  : 1.75;
+	/* 设置行高 */
+	counter-reset: line;
+}
+
+p>code {
+	padding         : 0.2rem !important;
+	border-radius   : 0.2rem;
+	background-color: rgb(244 244 245 / 1) !important;
+}
+
+.theme-dark p>code {
+	color           : #fff !important;
+	background-color: rgb(39 39 42 / 1) !important;
+}
+
+code>[data-line]::before {
+	counter-increment: line;
+	content          : counter(line);
+	margin-right     : 1rem;
+	/* 设置右边距 */
+	display          : inline-block;
+	width            : 1rem;
+	/* 设置宽度 */
+	text-align       : right;
+	/* 设置文字右对齐 */
+	color            : #a0aec0;
+	/* 设置文字颜色 */
+}
+
+table {
+	background : #fafafa url(https://jackrugile.com/images/misc/noise-diagonal.png);
+	color      : #444;
+	font       : 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+	text-shadow: 0 1px 0 #fff;
+}
+
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+table {
+	background     : #f5f5f5;
+	border-collapse: separate;
+	box-shadow     : inset 0 1px 0 #fff;
+	font-size      : 12px;
+	line-height    : 24px;
+	margin         : 30px auto;
+	text-align     : left;
+	width          : 800px;
+}
+
+th {
+	background   : url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left  : 1px solid #555;
+	border-right : 1px solid #777;
+	border-top   : 1px solid #555;
+	border-bottom: 1px solid #333;
+	box-shadow   : inset 0 1px 0 #999;
+	color        : #fff;
+	font-weight  : bold;
+	padding      : 10px 15px;
+	position     : relative;
+	text-shadow  : 0 1px 0 #000;
+}
+
+th:after {
+	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .08));
+	content   : '';
+	display   : block;
+	height    : 25%;
+	left      : 0;
+	margin    : 1px 0 0 0;
+	position  : absolute;
+	top       : 25%;
+	width     : 100%;
+}
+
+th:first-child {
+	border-left: 1px solid #777;
+	box-shadow : inset 1px 1px 0 #999;
+}
+
+th:last-child {
+	box-shadow: inset -1px 1px 0 #999;
+}
+
+td {
+	border-right : 1px solid #fff;
+	border-left  : 1px solid #e8e8e8;
+	border-top   : 1px solid #fff;
+	border-bottom: 1px solid #e8e8e8;
+	padding      : 10px 15px;
+	position     : relative;
+	transition   : all 300ms;
+}
+
+td:first-child {
+	box-shadow: inset 1px 0 0 #fff;
+}
+
+td:last-child {
+	border-right: 1px solid #e8e8e8;
+	box-shadow  : inset -1px 0 0 #fff;
+}
+
+tr {
+	background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:nth-child(odd) td {
+	background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png);
+}
+
+tr:last-of-type td {
+	box-shadow: inset 0 -1px 0 #fff;
+}
+
+tr:last-of-type td:first-child {
+	box-shadow: inset 1px -1px 0 #fff;
+}
+
+tr:last-of-type td:last-child {
+	box-shadow: inset -1px -1px 0 #fff;
+}
+
+tbody:hover td {
+	color      : transparent;
+	text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+	color      : #444;
+	text-shadow: 0 1px 0 #fff;
+}

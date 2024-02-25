@@ -1,0 +1,25 @@
+{
+  "name": "my-astro-blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.5",
+    "@astrojs/react": "^3.0.10",
+    "@astrojs/rss": "^4.0.5",
+    "@resvg/resvg-js": "^2.6.0",
+    "astro": "^4.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rehype-pretty-code": "^0.13.0",
+    "satori": "^0.10.13",
+    "shiki": "^1.1.6",
+    "typescript": "^5.3.3"
+  }
+}
