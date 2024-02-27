@@ -2,7 +2,7 @@
 title: 如果在Next页面中传递Props？
 author: Licodeao
 publishDate: "2023-11-15"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

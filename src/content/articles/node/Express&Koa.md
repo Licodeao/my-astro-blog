@@ -2,7 +2,7 @@
 title: Express与Koa的比较及源码解读
 author: Licodeao
 publishDate: "2022-11-5"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

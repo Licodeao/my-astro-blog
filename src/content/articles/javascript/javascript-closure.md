@@ -2,7 +2,7 @@
 title: 关于JavaScript闭包的理解
 author: Licodeao
 publishDate: "2021-10-05"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

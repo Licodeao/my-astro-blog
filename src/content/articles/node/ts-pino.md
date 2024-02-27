@@ -2,7 +2,7 @@
 title: TypeScript 集成 Pino
 author: Licodeao
 publishDate: "2024-2-4"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

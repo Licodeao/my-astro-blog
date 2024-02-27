@@ -2,7 +2,7 @@
 title: 游·香港
 author: Licodeao
 publishDate: "2023-7-9"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

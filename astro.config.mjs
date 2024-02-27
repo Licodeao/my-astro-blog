@@ -13,9 +13,6 @@ export default defineConfig({
   },
   site: "https://licodeao.top",
   vite: {
-    ssr: {
-      external: ["@resvg/resvg-js"],
-    },
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },

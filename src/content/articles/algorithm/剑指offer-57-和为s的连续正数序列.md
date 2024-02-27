@@ -2,7 +2,7 @@
 title: 剑指offer-57-和为s的连续正数序列📌
 author: Licodeao
 publishDate: "2023-5-6"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

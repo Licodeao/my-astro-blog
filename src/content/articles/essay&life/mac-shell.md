@@ -2,7 +2,7 @@
 title: Mac运行sh文件报错command not found
 author: Licodeao
 publishDate: "2023-10-22"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

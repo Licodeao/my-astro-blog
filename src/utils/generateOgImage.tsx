@@ -1,53 +1,37 @@
+import sharp from "sharp";
+import { readFile } from "node:fs/promises";
 import satori, { type SatoriOptions } from "satori";
-import { Resvg } from "@resvg/resvg-js";
-import type { CollectionEntry } from "astro:content";
-import articleOgImage from "./template";
-import { getIconCode, loadEmoji } from "./generateEmoji";
+import { Template } from "./template";
 
-const isDev = import.meta.env.DEV;
-const website = isDev ? "http://lcoalhost:4321" : "https://licodeao.top";
+export const generateOgImage = async (
+  text: string = "Default Title",
+  date: Date = new Date()
+): Promise<Buffer> => {
+  const options: SatoriOptions = {
+    width: 600,
+    height: 315,
+    embedFont: true,
+    fonts: [
+      {
+        name: "ZCOOLKuaiLe",
+        data: await readFile("public/fonts/ZCOOLKuaiLe-Regular.ttf"),
+        weight: 600,
+        style: "normal",
+      },
+    ],
+  };
 
-const fetchFonts = async () => {
-  const fontFile = await fetch(`${website}/fonts/ZCOOLKuaiLe-Regular.ttf`);
-  const fontBuffer = await fontFile.arrayBuffer();
-  return { fontBuffer };
+  const svg = await satori(
+    Template({
+      title: text,
+      date: date,
+    }),
+    options
+  );
+
+  const sharpSvg = Buffer.from(svg);
+
+  const buffer = await sharp(sharpSvg).toBuffer();
+
+  return buffer;
 };
-
-const { fontBuffer } = await fetchFonts();
-
-const options: SatoriOptions = {
-  width: 1200,
-  height: 630,
-  embedFont: true,
-  fonts: [
-    {
-      name: "ZCOOL KuaiLe",
-      data: fontBuffer,
-      weight: 400,
-      style: "normal",
-    },
-  ],
-  loadAdditionalAsset: async (code: string, segment: string) => {
-    if (code === "emoji") {
-      return (
-        `data:image/svg+xml;base64,` +
-        btoa(await loadEmoji("twemoji", getIconCode(segment)))
-      );
-    }
-
-    return (
-      `data:image/svg+xml;base64,` + btoa(await loadEmoji("twemoji", "1f92f"))
-    );
-  },
-} as any;
-
-export async function getnerateOgImage(article: CollectionEntry<"articles">) {
-  const svg = await satori(articleOgImage(article), options);
-  return svgBufferToPngBuffer(svg);
-}
-
-function svgBufferToPngBuffer(svg: string) {
-  const resvg = new Resvg(svg);
-  const pngData = resvg.render();
-  return pngData.asPng();
-}

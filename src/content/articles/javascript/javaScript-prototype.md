@@ -7,7 +7,8 @@ publishDate: "2021-10-08"
 tags:
   - JavaScript
   - 读后感
-img: "https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp"
+img: ""
+img_alt: ""
 categories:
   - JavaScript
 ---

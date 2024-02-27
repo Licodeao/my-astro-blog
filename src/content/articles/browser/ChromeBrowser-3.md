@@ -2,7 +2,7 @@
 title: 浏览器中的HTTP请求过程是怎么样的?🐱‍🚀
 author: Licodeao
 publishDate: "2023-4-14"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

@@ -2,7 +2,7 @@
 title: 打开一个页面，浏览器背后会做什么?🤔
 author: Licodeao
 publishDate: "2023-4-7"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

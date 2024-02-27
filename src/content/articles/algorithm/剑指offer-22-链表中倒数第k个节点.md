@@ -2,7 +2,7 @@
 author: Licodeao
 title: 剑指offer-22-链表中倒数第k个节点📌
 publishDate: "2023-5-16"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

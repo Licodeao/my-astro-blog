@@ -2,7 +2,7 @@
 title: yarn&npm查询线上版本不一致
 author: Licodeao
 publishDate: "2023-7-6"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB

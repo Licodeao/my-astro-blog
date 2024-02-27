@@ -2,7 +2,7 @@
 title: Leetcode-215-数组中的第K个最大元素📌
 author: Licodeao
 publishDate: "2023-6-5"
-img: https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/nestjs-graphql-mongodb.webp
+img: ""
 img_alt: NestJS 集成 GraphQL 和 MongoDB
 description: |
   如何在 NestJS 中集成 GraphQL 和 MongoDB
