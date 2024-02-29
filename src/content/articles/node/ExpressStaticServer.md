@@ -2,10 +2,10 @@
 title: Express静态服务访问错误
 author: Licodeao
 publishDate: "2023-6-14"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/nodejs.png
+img_alt: Express静态服务访问错误
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  解决 Express 静态服务访问错误的问题
 categories:
   - Node
 tags:

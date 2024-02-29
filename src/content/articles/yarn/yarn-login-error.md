@@ -2,10 +2,10 @@
 title: yarn publish错误
 author: Licodeao
 publishDate: "2023-7-5"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/yarn.png
+img_alt: yarn publish错误
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  yarn publish错误
 categories:
   - Package-Manager
 tags:

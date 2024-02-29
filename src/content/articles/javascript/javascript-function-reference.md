@@ -2,10 +2,10 @@
 title: 关于JavaScript函数引用的理解
 author: Licodeao
 publishDate: "2021-10-03"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/javascript.jpeg
+img_alt: 关于JavaScript函数引用的理解
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  关于 JavaScript 函数引用的理解
 categories:
   - JavaScript
 tags:

@@ -2,10 +2,10 @@
 title: Leetcode-19-删除链表的倒数第N个结点📌
 author: Licodeao
 publishDate: "2023-5-17"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-19-删除链表的倒数第N个结点📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-19-删除链表的倒数第N个结点📌
 categories:
   - Algorithm
 tags:

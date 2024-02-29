@@ -2,10 +2,10 @@
 title: Leetcode-150-逆波兰表达式求值📌
 author: Licodeao
 publishDate: 2023-5-30
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-150-逆波兰表达式求值📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-150-逆波兰表达式求值📌
 categories:
   - Algorithm
 tags:

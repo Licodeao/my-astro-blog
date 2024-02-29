@@ -2,10 +2,10 @@
 title: 如何在EventTarget中自定义事件
 author: Licodeao
 publishDate: "2022-9-18"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/javascript.jpeg
+img_alt: 如何在EventTarget中自定义事件
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  如何在 EventTarget中 自定义事件
 categories:
   - JavaScript
 tags:

@@ -2,10 +2,10 @@
 title: 端午·记
 author: Licodeao
 publishDate: "2023-6-23"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/essay.png
+img_alt: 端午·记
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  记录端午的一天
 categories:
   - 日常
 tags:

@@ -2,10 +2,10 @@
 title: Leetcode-146-LRU缓存📌
 author: Licodeao
 publishDate: 2023-5-26
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-146-LRU缓存📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-146-LRU缓存📌
 categories:
   - Algorithm
 tags:

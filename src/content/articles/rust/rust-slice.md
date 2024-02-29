@@ -2,10 +2,10 @@
 title: Rust slice类型
 author: Licodeao
 publishDate: "2023-12-22"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust slice类型
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust slice类型
 categories:
   - Rust
 tags:

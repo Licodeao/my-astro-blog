@@ -2,10 +2,10 @@
 title: Leetcode-66-加一📌
 author: Licodeao
 publishDate: "2023-4-3"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-66-加一📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-66-加一📌
 categories:
   - Algorithm
 tags:

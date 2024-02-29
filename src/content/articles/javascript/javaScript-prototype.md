@@ -1,5 +1,5 @@
 ---
-author: "Licodeao"
+author: Licodeao
 title: 《Head First JavaScript》读后感及原型相关概念的理解
 description: |
   《Head First JavaScript》读后感及原型相关概念的理解
@@ -7,8 +7,8 @@ publishDate: "2021-10-08"
 tags:
   - JavaScript
   - 读后感
-img: ""
-img_alt: ""
+img: /assets/articles/javascript.jpeg
+img_alt: "《Head First JavaScript》读后感及原型相关概念的理解"
 categories:
   - JavaScript
 ---

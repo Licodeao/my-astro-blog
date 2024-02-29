@@ -2,10 +2,10 @@
 title: Leetcode-239-滑动窗口最大值📌
 author: Licodeao
 publishDate: "2023-7-23"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-239-滑动窗口最大值📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-239-滑动窗口最大值📌
 categories:
   - Algorithm
 tags:

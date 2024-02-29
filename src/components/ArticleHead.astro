@@ -4,20 +4,22 @@ import { getCollection } from "astro:content";
 let obj: any = {};
 
 await getCollection("articles").then((res) => {
-  res.map((result) => {
-    obj = {
-      data: result.data,
-      slug: result.slug,
-    };
+  res.find((result) => {
+    Astro.url.pathname.includes(result.slug)
+      ? (obj = {
+          ...result.data,
+          slug: result.slug,
+          splitSlug: result.slug.split("/")[1],
+        })
+      : null;
   });
 });
-
 const { author, title, description, img } = obj;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 const socialImageURL = new URL(
-  img ?? `/articles/${obj.slug}/${obj.slug.split("/")[1]}.png`,
+  img ?? `/articles/${obj.slug}/${obj.splitSlug}.png`,
   Astro.url.origin
 ).href;
 ---

@@ -2,10 +2,10 @@
 title: net start mysql启动MySQL失败(无提示错误)
 author: Licodeao
 publishDate: "2023-6-2"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/mysql.png
+img_alt: net start mysql启动MySQL失败(无提示错误)
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  解决 MySQL 启动失败的问题
 categories:
   - MySQL
 tags:

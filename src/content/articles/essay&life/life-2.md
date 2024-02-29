@@ -2,10 +2,10 @@
 title: 游·香港
 author: Licodeao
 publishDate: "2023-7-9"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/essay.png
+img_alt: 游·香港
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  记录游玩香港的一天
 categories:
   - 日常
 tags:

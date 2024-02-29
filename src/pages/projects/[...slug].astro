@@ -10,7 +10,9 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
+  const projects = (await getCollection("projects")).sort(
+    (a, b) => b.data.publishDate - a.data.publishDate
+  );
 
   return projects.map((entry) => ({
     params: {
@@ -44,7 +46,6 @@ const { Content } = await entry.render();
               </p>
             </div>
           </Hero>
-          <Content />
         </div>
       </header>
       <main class="wrapper">

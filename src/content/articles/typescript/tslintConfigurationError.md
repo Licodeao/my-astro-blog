@@ -2,10 +2,10 @@
 title: VS Code配置TSLint不生效的问题
 author: Licodeao
 publishDate: "2023-6-28"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/ts.png
+img_alt: VS Code配置TSLint不生效的问题
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  VS Code配置TSLint不生效的问题
 categories:
   - VScode
 tags:

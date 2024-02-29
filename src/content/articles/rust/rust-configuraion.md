@@ -2,10 +2,10 @@
 title: Rust 环境配置
 author: Licodeao
 publishDate: "2023-9-4"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust 环境配置
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust 环境配置
 categories:
   - Rust
 tags:

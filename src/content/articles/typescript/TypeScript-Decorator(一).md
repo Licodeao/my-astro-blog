@@ -2,10 +2,10 @@
 title: 详解TypeScript装饰器(一)
 author: Licodeao
 publishDate: "2023-6-5"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/ts.png
+img_alt: 详解TypeScript装饰器(一)
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  详解 TypeScript Decorator(一)
 categories:
   - TypeScript
 tags:

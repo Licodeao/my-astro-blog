@@ -2,10 +2,10 @@
 title: Rust Trait
 author: Licodeao
 publishDate: "2024-1-20"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust Trait
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust Trait
 categories:
   - Rust
 tags:

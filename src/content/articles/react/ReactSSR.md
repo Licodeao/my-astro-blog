@@ -1,11 +1,11 @@
 ---
-title: 从零开始搭建React SSR
+title: 从零开始搭建 React SSR
 author: Licodeao
 publishDate: "2023-1-8"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/react.webp
+img_alt: 从零开始搭建React SSR
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  从零开始搭建 React SSR 应用
 categories:
   - React
   - Next

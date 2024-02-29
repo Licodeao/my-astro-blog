@@ -2,10 +2,10 @@
 title: 如何对CRA脚手架创建的React项目进行版本降级？
 author: Licodeao
 publishDate: "2023-11-29"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/react.webp
+img_alt: 如何对CRA脚手架创建的React项目进行版本降级？
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  如何对 CRA 脚手架创建的 React 项目进行版本降级？
 categories:
   - React
 tags:

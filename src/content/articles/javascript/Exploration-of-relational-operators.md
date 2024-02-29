@@ -2,10 +2,10 @@
 title: 关系运算符的探索
 author: Licodeao
 publishDate: "2022-9-16"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/javascript.jpeg
+img_alt: 关系运算符的探索
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  探索 JavaScript 中关系运算符的一些特性
 categories:
   - JavaScript
 tags:

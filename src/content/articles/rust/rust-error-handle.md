@@ -2,10 +2,10 @@
 title: Rust 错误处理
 author: Licodeao
 publishDate: "2024-1-18"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust 错误处理
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust 错误处理
 categories:
   - Rust
 tags:

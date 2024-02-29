@@ -2,10 +2,10 @@
 title: 访问者模式
 author: Licodeao
 publishDate: "2023-7-4"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/design-pattern.jpeg
+img_alt: 访问者模式
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  设计模式 —— 访问者模式
 categories:
   - 设计模式
 tags:

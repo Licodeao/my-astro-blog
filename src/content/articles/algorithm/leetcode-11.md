@@ -2,10 +2,10 @@
 title: Leetcode-11-盛最多水的容器📌
 author: Licodeao
 publishDate: "2023-5-5"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-11-盛最多水的容器📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-11-盛最多水的容器📌
 categories:
   - Algorithm
 tags:
@@ -20,9 +20,9 @@ tags:
 
 返回容器可以储存的最大水量。
 
-**说明：**你不能倾斜容器。
+**说明**：你不能倾斜容器。
 
-**示例 1：**
+**示例 1**：
 
 ![img](https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/question_11.jpg)
 
@@ -32,14 +32,14 @@ tags:
 解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。
 ```
 
-**示例 2：**
+**示例 2**：
 
 ```
 输入：height = [1,1]
 输出：1
 ```
 
-**提示：**
+**提示**：
 
 - `n == height.length`
 - `2 <= n <= 105`

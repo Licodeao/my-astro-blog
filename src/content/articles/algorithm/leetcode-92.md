@@ -2,10 +2,10 @@
 title: Leetcode-92-反转链表 II📌
 author: Licodeao
 publishDate: "2023-5-21"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-92-反转链表 II📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-92-反转链表 II📌
 categories:
   - Algorithm
 tags:

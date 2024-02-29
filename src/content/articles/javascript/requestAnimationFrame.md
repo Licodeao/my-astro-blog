@@ -2,10 +2,10 @@
 title: 详解requestAnimationFrame
 author: Licodeao
 publishDate: "2023-5-8"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/javascript.jpeg
+img_alt: 详解requestAnimationFrame
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  详解 requestAnimationFrame
 categories:
   - JavaScript
 tags:

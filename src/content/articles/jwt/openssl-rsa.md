@@ -2,10 +2,10 @@
 title: JSON Web Token Error
 author: Licodeao
 publishDate: "2023-6-7"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/jwt.jpeg
+img_alt: JSON Web Token Error
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  解决 JSON Web Token Error 的问题
 categories:
   - OpenSSL
 tags:

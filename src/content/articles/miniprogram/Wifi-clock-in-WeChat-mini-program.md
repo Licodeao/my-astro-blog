@@ -2,10 +2,10 @@
 title: 微信小程序实现WiFi打卡的思路
 author: Licodeao
 publishDate: "2022-9-4"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/wechat.jpeg
+img_alt: 微信小程序实现WiFi打卡的思路
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  微信小程序实现 WiFi 打卡的思路
 categories:
   - 技术分享
 tags:

@@ -1,11 +1,11 @@
 ---
-title: 如果在Next页面中传递Props？
+title: 如何在Next页面中传递Props？
 author: Licodeao
 publishDate: "2023-11-15"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/nextjs.png
+img_alt: 如何在Next页面中传递Props？
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  解决如何在 Next 页面中传递Props出现错误的问题
 categories:
   - Next
 tags:

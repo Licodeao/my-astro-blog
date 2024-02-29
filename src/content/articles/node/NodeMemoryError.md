@@ -2,10 +2,10 @@
 title: Node内存超标与V8垃圾回收机制
 author: Licodeao
 publishDate: "2023-7-11"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/nodejs.png
+img_alt: Node内存超标与V8垃圾回收机制
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Node 内存超标与 V8 垃圾回收机制
 categories:
   - Node
   - 性能优化

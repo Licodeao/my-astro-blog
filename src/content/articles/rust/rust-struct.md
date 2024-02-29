@@ -2,10 +2,10 @@
 title: Rust 结构体
 author: Licodeao
 publishDate: "2024-1-3"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust 结构体
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust 结构体
 categories:
   - Rust
 tags:

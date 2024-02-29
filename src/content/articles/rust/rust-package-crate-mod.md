@@ -2,10 +2,10 @@
 title: Rust 模块系统
 author: Licodeao
 publishDate: "2024-1-14"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust 模块系统
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust 模块系统
 categories:
   - Rust
 tags:

@@ -2,10 +2,10 @@
 title: 如何保证页面文件能被完整地送达浏览器?🛫
 author: Licodeao
 publishDate: "2023-4-12"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/browser.webp
+img_alt: 如何保证页面文件能被完整地送达浏览器?🛫
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  页面文件发送到浏览器会经历哪些过程?
 categories:
   - 浏览器工作原理
 tags:

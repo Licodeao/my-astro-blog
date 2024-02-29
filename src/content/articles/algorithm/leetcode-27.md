@@ -2,10 +2,10 @@
 title: Leetcode-27-移除元素📌
 author: Licodeao
 publishDate: "2023-5-5"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-27-移除元素📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-27-移除元素📌
 categories:
   - Algorithm
 tags:

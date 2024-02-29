@@ -2,10 +2,10 @@
 title: VNode Tree的生成
 author: Licodeao
 publishDate: "2023-6-27"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/vue.png
+img_alt: VNode Tree的生成
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Vue 中 VNode Tree的生成
 categories:
   - Vue
 tags:

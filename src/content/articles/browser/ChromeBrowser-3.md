@@ -1,11 +1,11 @@
 ---
-title: 浏览器中的HTTP请求过程是怎么样的?🐱‍🚀
+title: 浏览器中的HTTP请求过程是怎么样的?🚀
 author: Licodeao
 publishDate: "2023-4-14"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/browser.webp
+img_alt: 浏览器中的HTTP请求过程是怎么样的?🚀
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  详解浏览器中的HTTP请求过程
 categories:
   - 浏览器工作原理
 tags:

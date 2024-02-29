@@ -2,10 +2,10 @@
 title: Leetcode-203-移除链表元素📌
 author: Licodeao
 publishDate: "2023-5-14"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-203-移除链表元素📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-203-移除链表元素📌
 categories:
   - Algorithm
 tags:

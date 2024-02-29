@@ -2,10 +2,10 @@
 title: Leetcode-295-数据流的中位数📌
 author: Licodeao
 publishDate: "2023-7-19"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-295-数据流的中位数📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-295-数据流的中位数📌
 categories:
   - Algorithm
 tags:

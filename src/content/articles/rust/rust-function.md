@@ -2,10 +2,10 @@
 title: Rust 函数
 author: Licodeao
 publishDate: "2023-9-29"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/rust.png
+img_alt: Rust 函数
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Rust 函数
 categories:
   - Rust
 tags:

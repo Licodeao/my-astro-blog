@@ -2,10 +2,10 @@
 title: 什么是JS Bridge?
 author: Licodeao
 publishDate: "2023-7-16"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/javascript.jpeg
+img_alt: 什么是JS Bridge?
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  什么是JS Bridge?
 categories:
   - JavaScript
 tags:

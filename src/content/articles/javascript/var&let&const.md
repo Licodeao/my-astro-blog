@@ -2,10 +2,10 @@
 title: var、let、const的详解与区别
 author: Licodeao
 publishDate: "2021-10-11"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/javascript.jpeg
+img_alt: var、let、const的详解与区别
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  ES6 中 var、let、const 的详解与区别
 categories:
   - ECMAScript
 tags:

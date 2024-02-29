@@ -2,7 +2,7 @@
 author: Licodeao
 title: 🏷️ 2023 · 年度总结
 publishDate: "2023-12-30"
-img: ""
+img: "https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/2023.png"
 img_alt: 2023 · 年度总结
 description: |
   2023 · 年度总结

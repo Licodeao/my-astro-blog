@@ -2,10 +2,10 @@
 title: ts-node 错误的解决方案集合📦
 author: Licodeao
 publishDate: "2024-2-2"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/ts.png
+img_alt: ts-node 错误的解决方案集合📦
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  ts-node 错误的解决方案集合📦
 categories:
   - TypeScript
 tags:

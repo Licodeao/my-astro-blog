@@ -2,10 +2,10 @@
 title: 类型插图
 author: Licodeao
 publishDate: "2023-1-4"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/ts.png
+img_alt: 类型插图
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  TypeScript 类型插图
 categories:
   - TypeScript
 tags:

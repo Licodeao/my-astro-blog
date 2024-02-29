@@ -2,10 +2,10 @@
 title: Leetcode-69-x的平方根📌
 author: Licodeao
 publishDate: "2023-4-6"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-69-x的平方根📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-69-x的平方根📌
 categories:
   - Algorithm
 tags:

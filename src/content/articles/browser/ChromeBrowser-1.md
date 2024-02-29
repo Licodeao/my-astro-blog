@@ -2,10 +2,10 @@
 title: 打开一个页面，浏览器背后会做什么?🤔
 author: Licodeao
 publishDate: "2023-4-7"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/browser.webp
+img_alt: 打开一个页面，浏览器背后会做什么?🤔
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  浅析浏览器的背后原理
 categories:
   - 浏览器工作原理
 tags:

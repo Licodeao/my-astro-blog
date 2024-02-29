@@ -2,10 +2,10 @@
 title: Leetcode-382-链表随机节点📌
 author: Licodeao
 publishDate: 2023-5-25
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-382-链表随机节点📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-382-链表随机节点📌
 categories:
   - Algorithm
 tags:

@@ -2,10 +2,10 @@
 title: Nginx(一)
 author: Licodeao
 publishDate: "2022-9-22"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/nginx.jpeg
+img_alt: Nginx(一)
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  什么是 Nginx ?
 categories:
   - Nginx
 tags:

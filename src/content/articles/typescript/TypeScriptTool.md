@@ -2,10 +2,10 @@
 title: TypeScript常见的内置工具与实现
 author: Licodeao
 publishDate: "2023-1-15"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/ts.png
+img_alt: TypeScript常见的内置工具与实现
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  TypeScript 常见的内置工具与实现
 categories:
   - TypeScript
 tags:

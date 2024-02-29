@@ -2,10 +2,10 @@
 title: V8引擎(十一)
 author: Licodeao
 publishDate: "2022-12-10"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/v8.webp
+img_alt: V8引擎(十一)
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  V8 引擎学习(十一)
 categories:
   - V8
 tags:

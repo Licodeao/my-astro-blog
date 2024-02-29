@@ -2,10 +2,10 @@
 title: Leetcode-225-用队列实现栈📌
 author: Licodeao
 publishDate: "2023-5-28"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-225-用队列实现栈📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-225-用队列实现栈📌
 categories:
   - Algorithm
 tags:

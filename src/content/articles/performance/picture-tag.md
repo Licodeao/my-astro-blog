@@ -2,10 +2,10 @@
 title: 前端图片资源优化的新姿势 💃🏻
 author: Licodeao
 publishDate: "2024-2-15"
-img: "https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/avatar1.jpg"
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/performance.webp
+img_alt: 前端图片资源优化的新姿势 💃🏻
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  图片资源优化的新手段: picture 标签
 categories:
   - 性能优化
 tags:

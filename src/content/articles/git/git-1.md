@@ -2,10 +2,10 @@
 title: 版本控制总结
 author: Licodeao
 publishDate: "2023-6-28"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/git.png
+img_alt: 版本控制总结
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  版本控制系统的总结
 categories:
   - Git
 tags:

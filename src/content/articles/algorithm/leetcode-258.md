@@ -2,10 +2,10 @@
 title: Leetcode-258-各位相加📌
 author: Licodeao
 publishDate: "2023-4-3"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: Leetcode-258-各位相加📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  Leetcode-258-各位相加📌
 categories:
   - Algorithm
 tags:

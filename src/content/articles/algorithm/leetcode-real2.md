@@ -2,10 +2,10 @@
 title: 字节真题-变形的链表反转📌
 author: Licodeao
 publishDate: "2023-5-23"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/leetcode.png
+img_alt: 字节真题-变形的链表反转📌
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  字节真题-变形的链表反转📌
 categories:
   - Algorithm
 tags:

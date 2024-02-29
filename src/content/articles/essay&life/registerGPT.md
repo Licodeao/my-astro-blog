@@ -2,10 +2,10 @@
 title: 如何注册ChatGPT?
 author: Licodeao
 publishDate: "2023-2-14"
-img: ""
-img_alt: NestJS 集成 GraphQL 和 MongoDB
+img: /assets/articles/essay.png
+img_alt: 如何注册ChatGPT?
 description: |
-  如何在 NestJS 中集成 GraphQL 和 MongoDB
+  如何注册ChatGPT?
 categories:
   - 技术分享
   - Next
