@@ -12,8 +12,6 @@ tags:
   - Algorithm
 ---
 
-![alt text](image.png)
-
 ## 剑指 Offer 03. 数组中重复的数字
 
 找出数组中重复的数字。
