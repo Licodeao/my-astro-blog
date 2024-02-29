@@ -10,7 +10,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   blogs.forEach((blog) =>
     result.push({
-      params: { slug: `articles/${blog.slug}` },
+      params: { slug: `articles/${blog.slug}/${blog.slug.split("/")[1]}` },
       props: {
         title: blog.data.title,
         date: blog.data.publishDate,

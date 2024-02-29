@@ -2,6 +2,7 @@ import sharp from "sharp";
 import { readFile } from "node:fs/promises";
 import satori, { type SatoriOptions } from "satori";
 import { Template } from "./template";
+import { loadEmoji, getIconCode } from "./generateEmoji";
 
 export const generateOgImage = async (
   text: string = "Default Title",
@@ -19,6 +20,16 @@ export const generateOgImage = async (
         style: "normal",
       },
     ],
+    loadAdditionalAsset: async (code: string, segment: string) => {
+      if (code === "emoji") {
+        // 处理 emoji 的情况，比如 😄
+        return `data:image/svg+xml;base64, ${btoa(
+          await loadEmoji("twemoji", getIconCode(segment))
+        )}`;
+      }
+
+      return code;
+    },
   };
 
   const svg = await satori(

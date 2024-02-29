@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+
+let obj: any = {};
+
+await getCollection("articles").then((res) => {
+  res.map((result) => {
+    obj = {
+      data: result.data,
+      slug: result.slug,
+    };
+  });
+});
+
+const { author, title, description, img } = obj;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
+const socialImageURL = new URL(
+  img ?? `/articles/${obj.slug}/${obj.slug.split("/")[1]}.png`,
+  Astro.url.origin
+).href;
+---
+
+<meta name="author" content={author} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={socialImageURL} />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@LYangWu" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />

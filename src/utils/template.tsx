@@ -75,45 +75,22 @@ export const Template = (props: OgData) => (
             })}
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ marginRight: "16px" }}>Jafar Aziz</span>
+            <img
+              src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/avatar1.jpg"
+              alt="avatar"
+              width="18"
+              height="18"
+              style={{
+                width: "18px",
+                height: "18px",
+                borderRadius: "50%",
+                marginRight: "5px",
+              }}
+            />
+            <span style={{ marginRight: "6px" }}>Licodeao</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 );
-
-const generateOgImage = async (
-  text: string = "https://licodeao.top",
-  date: Date = new Date()
-): Promise<Buffer> => {
-  const options: SatoriOptions = {
-    width: 600,
-    height: 315,
-    embedFont: true,
-    fonts: [
-      {
-        name: "ZCOOLKuaiLe",
-        data: await readFile("/fonts/ZCOOLKuaiLe-Regular.ttf"),
-        weight: 600,
-        style: "normal",
-      },
-    ],
-  };
-
-  const svg = await satori(
-    Template({
-      title: text,
-      date: date,
-    }),
-    options
-  );
-
-  const sharpSvg = Buffer.from(svg);
-
-  const buffer = await sharp(sharpSvg).toBuffer();
-
-  return buffer;
-};
-
-export default generateOgImage;

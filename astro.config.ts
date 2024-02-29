@@ -12,9 +12,4 @@ export default defineConfig({
     rehypePlugins: [[rehypePrettyCode, options]],
   },
   site: "https://licodeao.top",
-  vite: {
-    optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
-    },
-  },
 });
