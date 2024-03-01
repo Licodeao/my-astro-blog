@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.5.5",
     "@astrojs/react": "^3.0.10",
     "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.1",
     "@resvg/resvg-js": "^2.6.0",
     "astro": "^4.4.1",
     "astro-satori": "^0.1.6",

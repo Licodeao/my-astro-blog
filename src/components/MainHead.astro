@@ -9,6 +9,7 @@ const pathname = Astro.url.pathname.includes("articles");
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
 <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
 <meta name="generator" content={Astro.generator} />
 
 {pathname && <ArticleHead />}
