@@ -2,7 +2,7 @@
 title: Python基础(二)
 author: Licodeao
 publishDate: "2022-8-3 23:36"
-img: /assets/articles/python.png
+img: /assets/articles/python.jpeg
 img_alt: Python基础(二)
 description: |
   Python基础(二)

@@ -2,7 +2,7 @@
 title: Python爬虫(一)
 author: Licodeao
 publishDate: "2022-8-14"
-img: /assets/articles/python.png
+img: /assets/articles/python.jpeg
 img_alt: Python爬虫(二)
 description: |
   Python爬虫(二)

@@ -2,7 +2,7 @@
 title: net start mysql启动MySQL失败(无提示错误)
 author: Licodeao
 publishDate: "2023-6-2"
-img: /assets/articles/mysql.png
+img: /assets/articles/db.png
 img_alt: net start mysql启动MySQL失败(无提示错误)
 description: |
   解决 MySQL 启动失败的问题

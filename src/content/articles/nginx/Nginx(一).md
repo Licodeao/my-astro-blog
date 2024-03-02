@@ -2,7 +2,7 @@
 title: Nginx(一)
 author: Licodeao
 publishDate: "2022-9-22"
-img: /assets/articles/nginx.jpeg
+img: /assets/articles/nginx.svg
 img_alt: Nginx(一)
 description: |
   什么是 Nginx ?
