@@ -154,4 +154,27 @@ const { Content } = await entry.render();
       font-size: var(--text-2xl);
     }
   }
+  @media (max-width: 50em) {
+    .content :global(h1),
+    .content :global(h2),
+    .content :global(h3) {
+      font-size: var(--text-lg);
+    }
+
+    .content :global(p),
+    .content :global(ul) {
+      width: 90vw;
+      overflow: hidden;
+    }
+
+    .content :global(table) {
+      width: 90vw;
+      height: 70vh;
+      margin: auto 0;
+    }
+
+    .content :global(figure) {
+      width: 90vw;
+    }
+  }
 </style>
