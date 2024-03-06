@@ -55,7 +55,8 @@ const projectCount = (await getCollection("projects")).length;
           width="450"
           height="450"
           src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/avatar1.jpg"
-          style="border-radius: 50%; box-shadow: var(--shadow-md); height:450px !important; width:450px !important;"
+          style="border-radius: 50%; box-shadow: var(--shadow-md); height:450px; width:450px;"
+          class="avatar"
         />
       </header>
 
@@ -169,6 +170,14 @@ const projectCount = (await getCollection("projects")).length;
     }
   }
 
+  @media (max-width: 50em) {
+    .hero .avatar {
+      width: 450px !important;
+      height: 360px !important;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
   /* ====================================================== */
 
   .section {

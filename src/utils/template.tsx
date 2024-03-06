@@ -1,7 +1,4 @@
 import React from "react";
-import sharp from "sharp";
-import satori, { type SatoriOptions } from "satori";
-import { readFile } from "fs/promises";
 export interface OgData {
   title: string;
   date: Date;
