@@ -33,9 +33,9 @@ tags:
 
 TODO:
 
-- [ ] : 集成 GraphQL
-- [ ] : 将 TypeORM 换成 Prisma
-- [ ] : 集成 Github Actions
-- [ ] : 使用 Rust 重写后端程序
+- [ ] 集成 GraphQL
+- [ ] 将 TypeORM 换成 Prisma
+- [ ] 集成 Github Actions
+- [ ] 使用 Rust 重写后端程序
 
 📦 项目地址：[GitHub](https://github.com/Licodeao/lico-ai)
