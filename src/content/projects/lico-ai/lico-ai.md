@@ -21,13 +21,13 @@ tags:
 - Vite
 - TypeScript
 - 低代码开发
-- FFmpeg 音视频
 
 后端:
 
 - NestJS
 - TypeORM
 - MySQL
+- FFmpeg 音视频
 - Redis
 - Docker
 
