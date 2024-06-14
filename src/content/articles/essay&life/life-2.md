@@ -2,7 +2,7 @@
 title: 游·香港
 author: Licodeao
 publishDate: "2023-7-9"
-img: /assets/articles/essay.png
+img: /assets/articles/essay.jpg
 img_alt: 游·香港
 description: |
   记录游玩香港的一天

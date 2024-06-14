@@ -2,7 +2,7 @@
 title: 迁移完毕
 author: Licodeao
 publishDate: "2022-8-25"
-img: /assets/articles/essay.png
+img: /assets/articles/essay.jpg
 img_alt: 迁移完毕
 description: |
   博客从 Wordpress 迁移到 Vuepress

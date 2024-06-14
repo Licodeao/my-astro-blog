@@ -2,7 +2,7 @@
 title: Mac运行sh文件报错command not found
 author: Licodeao
 publishDate: "2023-10-22"
-img: /assets/articles/essay.png
+img: /assets/articles/essay.jpg
 img_alt: Mac运行sh文件报错command not found
 description: |
   解决 Mac 运行不了 shell 文件

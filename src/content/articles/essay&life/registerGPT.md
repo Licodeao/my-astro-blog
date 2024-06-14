@@ -2,7 +2,7 @@
 title: 如何注册ChatGPT?
 author: Licodeao
 publishDate: "2023-2-14"
-img: /assets/articles/essay.png
+img: /assets/articles/essay.jpg
 img_alt: 如何注册ChatGPT?
 description: |
   如何注册ChatGPT?

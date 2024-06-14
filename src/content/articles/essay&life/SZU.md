@@ -2,7 +2,7 @@
 title: 参观 · 深大
 author: Licodeao
 publishDate: "2024-3-17"
-img: /assets/articles/essay.png
+img: /assets/articles/essay.jpg
 img_alt: 深圳大学
 description: |
   参观深圳大学(粤海校区)

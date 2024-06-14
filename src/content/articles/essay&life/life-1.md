@@ -2,7 +2,7 @@
 title: 端午·记
 author: Licodeao
 publishDate: "2023-6-23"
-img: /assets/articles/essay.png
+img: /assets/articles/essay.jpg
 img_alt: 端午·记
 description: |
   记录端午的一天
