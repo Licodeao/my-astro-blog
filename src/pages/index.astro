@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -15,7 +16,7 @@ import ProjectsPreview from "../components/ProjectsPreview.astro";
 
 // Page section components
 import Skills from "../components/Skills.astro";
-// import Me from "../../public/assets/articles/me.png";
+import Me from "../../public/assets/backgrounds/me.png";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("articles"))
@@ -50,11 +51,11 @@ const projectCount = (await getCollection("projects")).length;
             <Pill><Icon icon="pencil-line" size="1.33em" /> 爱写文章</Pill>
           </div>
         </Hero>
-        <img
+        <Image
+          src={Me}
           alt="Licodeao's photo"
           width="450"
           height="450"
-          src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/me.png"
           class="avatar"
         />
       </header>
