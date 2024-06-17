@@ -15,6 +15,7 @@ import ProjectsPreview from "../components/ProjectsPreview.astro";
 
 // Page section components
 import Skills from "../components/Skills.astro";
+// import Me from "../../public/assets/articles/me.png";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("articles"))
@@ -49,13 +50,13 @@ const projectCount = (await getCollection("projects")).length;
             <Pill><Icon icon="pencil-line" size="1.33em" /> 爱写文章</Pill>
           </div>
         </Hero>
-
+        <!-- src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/avatar1.jpg" -->
+        <!-- style="border-radius: 50%; box-shadow: var(--shadow-md); height:450px; width:450px;" -->
         <img
           alt="Licodeao's photo"
           width="450"
           height="450"
-          src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/avatar1.jpg"
-          style="border-radius: 50%; box-shadow: var(--shadow-md); height:450px; width:450px;"
+          src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/me.png"
           class="avatar"
         />
       </header>
@@ -142,11 +143,11 @@ const projectCount = (await getCollection("projects")).length;
   }
 
   .hero img {
-    aspect-ratio: 5 / 4;
+    /* aspect-ratio: 5 / 4;
     object-fit: cover;
     object-position: top;
     border-radius: 1.5rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md); */
   }
 
   @media (min-width: 50em) {
@@ -164,18 +165,18 @@ const projectCount = (await getCollection("projects")).length;
     }
 
     .hero img {
-      aspect-ratio: 3 / 4;
-      border-radius: 4.5rem;
-      object-fit: cover;
+      /* aspect-ratio: 3 / 4; */
+      /* border-radius: 4.5rem; */
+      /* object-fit: cover; */
     }
   }
 
   @media (max-width: 50em) {
     .hero .avatar {
-      width: 450px !important;
-      height: 360px !important;
-      border-radius: 50%;
-      object-fit: cover;
+      /* width: 450px !important; */
+      /* height: 360px !important; */
+      /* border-radius: 50%; */
+      /* object-fit: cover; */
     }
   }
   /* ====================================================== */
