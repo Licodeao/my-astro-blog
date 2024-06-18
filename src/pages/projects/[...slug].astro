@@ -11,7 +11,9 @@ interface Props {
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects")).sort(
-    (a, b) => b.data.publishDate - a.data.publishDate
+    (a: any, b: any) =>
+      (new Date(b.data.publishDate) as any) -
+      (new Date(a.data.publishDate) as any)
   );
 
   return projects.map((entry) => ({
@@ -19,7 +21,7 @@ export async function getStaticPaths() {
       slug: entry.slug,
     },
     props: {
-      entry: entry,
+      entry,
     },
   }));
 }

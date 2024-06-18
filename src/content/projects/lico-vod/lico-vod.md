@@ -1,6 +1,7 @@
 ---
 title: 哩叩Vod
 author: Licodeao
+publishDate: "2022-11-11"
 img: /assets/projects/video.jpeg
 tags:
   - 项目

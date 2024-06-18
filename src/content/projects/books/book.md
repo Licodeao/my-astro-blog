@@ -1,13 +1,11 @@
 ---
-  author: Licodeao
-  title: 书籍收录
-  publishDate: '2023-1-21'
-  img: /assets/projects/book.avif
-  img_alt: NestJS 集成 GraphQL 和 MongoDB
-  description: |
-    旨在对所购买的书籍进行记录和统计
-  tags:
-    - 书籍
+title: 书籍收录
+author: Licodeao
+publishDate: "2023-1-21"
+description: 旨在对所购买的书籍进行记录和统计
+img: /assets/projects/book.avif
+tags:
+  - 书籍
 ---
 
 <p align="center"><strong>前端</strong></p>

@@ -24,7 +24,11 @@ const projects = (await getCollection("articles"))
   .slice(0, 6);
 
 const realProjects = (await getCollection("projects"))
-  .sort((a, b) => b.data.publishDate - a.data.publishDate)
+  .sort(
+    (a: any, b: any) =>
+      (new Date(b.data.publishDate) as any) -
+      (new Date(a.data.publishDate) as any)
+  )
   .slice(0, 4);
 
 // 文章总数
@@ -42,7 +46,7 @@ const projectCount = (await getCollection("projects")).length;
       <header class="hero">
         <Hero
           title="Hello, my name is Licodeao 🧑🏻‍💻"
-          tagline="「流水不争先，争的是滔滔不绝」"
+          tagline="「你若盛开，蜂蝶自来。」"
           align="start"
         >
           <div class="roles">
