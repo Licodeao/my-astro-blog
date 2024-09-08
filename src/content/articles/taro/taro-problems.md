@@ -52,7 +52,7 @@ $ set NODE_OPTIONS=
 
 推荐 [Taroify](https://taroify.github.io/taroify.com/quickstart/) 作为 Taro 组件库。为啥不推荐 `Taro-ui` ？因为我被其 `Checkbox` 组件恶心到了，太臃肿了。当然这得看业务是否匹配，因为我认为大多数复选框的情况，只需要用到圆点，而非像 `Taro-ui` 一样用于列表展示的情况。综上所述，`Taroify` 是个使用起来简单且轻量的组件库，没那么大的心智负担；而用 `Taro-ui` 就要考虑的更多了... 简单来说，用 `Taroify` 由简入奢，体验良好；但是用 `Taro-ui` 由奢入俭，得看你能不能受得了它的折磨了 😄
 
-在使用 `Taroify` 组件库开发省市区级联选择功能时，又遇到了个坑：
+在使用 `Taroify` 组件库开发省市区级联选择功能时，又遇到了个坑（开发紧张，就不提 PR 了，本来想提个 issue 的，但是发现这个小问题，被 issue 规范挡住了。如果您能在本地复现该 bug，欢迎您给 @vant 提 PR。）：
 
 - `Taro` v3.4.14
 - `Taroify` v0.4.0-alpha.0
@@ -64,7 +64,7 @@ $ set NODE_OPTIONS=
 
 依据文档所说的做，会是如下结果：
 
-<video src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/iShot_2024-09-04_22.32.26.mp4" autoplay controls>
+<video src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/iShot_2024-09-04_22.32.26.mp4" autoplay controls></video>
 
 我们将数据打印出来看看：
 
@@ -80,7 +80,7 @@ $ set NODE_OPTIONS=
 
 这里的字段明明是 `label` ！ 本着试一试的心态，我们将 `dept` 数据放到代码里试一试。
 
-<video src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/iShot_2024-09-04_22.42.47.mp4" autoplay controls>
+<video src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/iShot_2024-09-04_22.42.47.mp4" autoplay controls></video>
 
 发现竟然可行，这就证明了 `Cascader` 组件实际需要的是 `label` 字段，而非 `text`。那只好去修改源码了...
 
@@ -96,6 +96,111 @@ $ set NODE_OPTIONS=
 
 最后，看看效果：
 
-<video src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/iShot_2024-09-04_22.48.49.mp4" autoplay controls>
+<video src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/iShot_2024-09-04_22.48.49.mp4" autoplay controls></video>
+成功解决！😯
 
-成功解决！😯 开发进行中，后续碰到坑，会持续更新本文......
+# 引入 Redux 报错
+
+在安装完 `Redux` 后，编译运行后微信开发者工具会报以下错误：
+
+```
+Uncaught TypeError: Cannot read properties of undefined (reading 'isBatchingLegacy')
+```
+
+解决方法就是将 `react` 相关包升级到 v18 版本，并且注意 `@tarojs/**` 系列包的版本需要一致。
+
+解决完后的 `package.json` 如下：
+
+```json
+{
+  "resolutions": {
+    "@types/react": "18.0.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.7.7",
+    "@reduxjs/toolkit": "^1.9.0",
+    "@taroify/core": "^0.4.0-alpha.0",
+    "@tarojs/components": "3.5.7",
+    "@tarojs/plugin-framework-react": "3.5.7",
+    "@tarojs/react": "3.5.7",
+    "@tarojs/runtime": "3.5.7",
+    "@tarojs/taro": "3.5.7",
+    "@types/react-dom": "18.0.0",
+    "@vant/area-data": "^1.5.2",
+    "classnames": "^2.5.1",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-redux": "^8.0.5",
+    "taro-ui": "^3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@tarojs/mini-runner": "3.5.7",
+    "@tarojs/webpack-runner": "3.5.7",
+    "@types/react": "18.0.0",
+    "@types/webpack-env": "^1.13.6",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "babel-plugin-import": "^1.13.8",
+    "babel-preset-taro": "3.4.14",
+    "eslint": "^8.12.0",
+    "eslint-config-taro": "3.4.14",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-react": "^7.8.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "stylelint": "^14.4.0",
+    "typescript": "^4.1.0"
+  }
+}
+```
+
+# 网络请求
+
+在 `Taro` 开发中，发起网络请求时，不能直接使用封装的 `axios` 。这会导致编译器中没有报错，但是在微信开发者工具中出现类似以下错误：
+
+```
+TypeError: Cannot read property 'prototype' of undefined
+```
+
+且这个报错指向 `axios` ，因此使用 `Taro` 开发中不能直接使用 `axios` 。
+
+下面是个 `Taro` 中简单的网络请求封装：
+
+```ts
+import Taro from "@tarojs/taro";
+
+const BASE_URL = "xxx";
+const TIMEOUT = 10000;
+
+class LiRequest {
+  request(options) {
+    return new Promise((resolve, reject) => {
+      Taro.request({
+        url: BASE_URL + options.url,
+        timeout: TIMEOUT,
+        method: options.method || "GET",
+        data: options.data || {},
+        header: options.header || {
+          "content-type": "application/json",
+        },
+        success: (res) => {
+          resolve(res.data);
+        },
+        fail: reject,
+      });
+    });
+  }
+
+  get(url, params) {
+    return this.request({ url, method: "GET", params });
+  }
+
+  post(url, data) {
+    return this.request({ url, method: "POST", data });
+  }
+}
+
+export default new LiRequest();
+```
+
+开发进行中，后续碰到坑，会持续更新本文......
