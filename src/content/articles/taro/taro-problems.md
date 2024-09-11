@@ -169,30 +169,74 @@ TypeError: Cannot read property 'prototype' of undefined
 ```ts
 import Taro from "@tarojs/taro";
 
-const BASE_URL = "xxx";
+export const BASE_URL = "xxx";
 const TIMEOUT = 10000;
 
 class LiRequest {
-  request(options) {
+  request(options: {
+    url: string;
+    method?: "GET" | "POST" | "PUT" | "DELETE";
+    data?: object;
+    header?: object;
+    query?: object;
+  }) {
     return new Promise((resolve, reject) => {
+      // 处理查询参数
+      let queryString = "";
+      if (options.query) {
+        queryString = Object.keys(options.query)
+          .map(
+            (key) =>
+              `${encodeURIComponent(key)}=${encodeURIComponent(
+                options.query![key]
+              )}`
+          )
+          .join("&");
+      }
+
       Taro.request({
-        url: BASE_URL + options.url,
+        url: `${BASE_URL}${options.url}${queryString ? `?${queryString}` : ""}`,
         timeout: TIMEOUT,
         method: options.method || "GET",
         data: options.data || {},
         header: options.header || {
           "content-type": "application/json",
         },
-        success: (res) => {
-          resolve(res.data);
+        success: (res: any) => {
+          if (res.data.code === 602) {
+            reject(new Error("登录过期"));
+          } else {
+            resolve(res.data);
+          }
         },
         fail: reject,
       });
+    }).catch((e) => {
+      if (e.message === "登录过期") {
+        Taro.showModal({
+          title: "登录过期",
+          content: "您的登录已过期，请重新登录！",
+          showCancel: false,
+          success: (modalRes) => {
+            if (modalRes.confirm) {
+              Taro.removeStorageSync("token");
+              Taro.removeStorageSync("userInfo");
+              Taro.getApp().token = null;
+              Taro.getApp().userInfo = null;
+              Taro.reLaunch({
+                url: "/pages/me/index",
+              });
+            }
+          },
+        });
+      } else {
+        throw e;
+      }
     });
   }
 
-  get(url, params) {
-    return this.request({ url, method: "GET", params });
+  get(url, query) {
+    return this.request({ url, method: "GET", query });
   }
 
   post(url, data) {
@@ -201,6 +245,65 @@ class LiRequest {
 }
 
 export default new LiRequest();
+```
+
+# 缓存读取不了
+
+![image-20240911203005802](https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/image-20240911203005802.png)
+
+`Taro` 开发微信小程序时，有时候会读取不了存在本地的数据。我以为只是 `Taro` 的问题，查了一圈发现，就是使用原生开发微信小程序也存在这个问题...
+
+所以无奈下，只能去适配这种情况，<font color="red">将需要存储的数据分别在缓存、全局变量、状态管理库中，存储一遍</font>，在后续使用时，再依次读取并判断。
+
+```ts
+// 针对于全局变量，需要在 app 入口组件中设置(app.js/app.tsx)
+// 设置全局数据
+taroGlobalData = {
+  token: "",
+  userInfo: {},
+};
+
+// example 用于存储用户信息
+export async function getUserInfoSync(token) {
+  // Taro 使用React 时，获取全局变量通过 getApp 方法
+  let app = Taro.getApp();
+
+  // 优先使用缓存数据
+  let cacheUserInfo = Taro.getStorageSync("userInfo") || app.userInfo || {};
+  // 注意空对象在隐式转换为布尔值时，会转为true，所以判断条件需要多一点
+  if (
+    Object.keys(cacheUserInfo).length !== 0 &&
+    typeof cacheUserInfo === "object" &&
+    cacheUserInfo !== null
+  ) {
+    app.userInfo = cacheUserInfo;
+    Taro.setStorageSync("userInfo", cacheUserInfo);
+    return {
+      code: 200,
+      userInfo: cacheUserInfo,
+      message: "缓存中存在userInfo",
+    };
+  }
+
+  // 缓存中不存在userInfo，再请求接口，并缓存数据
+  let res: any = await LiRequest.request({
+    url: "/getWxUserInfo",
+    method: "GET",
+    header: {
+      Authorization: token,
+    },
+  });
+  let requestUserInfo = res.code === 200 ? res.user : {};
+  res.code !== 200 && console.log("获取用户信息失败!");
+  app.userInfo = requestUserInfo;
+  Taro.setStorageSync("userInfo", requestUserInfo);
+
+  return {
+    code: res.code,
+    userInfo: requestUserInfo,
+    message: res.code === 200 ? "重新请求获取userInfo成功" : "获取用户信息失败",
+  };
+}
 ```
 
 开发进行中，后续碰到坑，会持续更新本文......
