@@ -2,12 +2,20 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import Pill from "../components/Pill.astro";
 import type { string } from "astro/zod";
 import { formatDate } from "../utils/padZero";
 
+const articles = await getCollection("articles");
+
+const allCategories = [
+  "全部",
+  ...new Set(articles.flatMap((article) => article.data.categories || [])),
+];
+
 const articlesByYear = {};
 
-(await getCollection("articles")).forEach((airticle) => {
+articles.forEach((airticle) => {
   const publishYear = new Date(airticle.data.publishDate).getFullYear();
 
   if (!articlesByYear[publishYear]) {
@@ -24,7 +32,12 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
   <div class="stack gap-20">
     <main class="wrapper stack gap-8">
       <Hero title="归档" tagline="留下时光的痕迹。" align="start" />
-      <ul style="padding:0 !important; list-style:none;">
+
+      <div class="categories roles">
+        {allCategories.map((category) => <Pill>{category}</Pill>)}
+      </div>
+
+      <ul style="padding:0 !important; list-style:none;" id="articles-list">
         {
           articlesByYearArray.map(([key, value]: [string, any]) => (
             <>
@@ -32,7 +45,11 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
               {value
                 .sort((a, b) => b.data.publishDate - a.data.publishDate)
                 .map((article) => (
-                  <li style="margin: 10px 0;">
+                  <li
+                    style="margin: 10px 0;"
+                    class="article-item"
+                    data-tags={article.data.categories}
+                  >
                     <div style="display:flex; just-content:space-around; align-items:center; gap:10px;">
                       <span style="width:100px;background: linear-gradient(-45deg,#7635B5 60%, #fff 100%); border-radius:5px;text-align:center; color:#fff;">
                         {formatDate(new Date(article.data.publishDate))}
@@ -50,3 +67,57 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
     </main>
   </div>
 </BaseLayout>
+
+<style>
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 50em) {
+    .roles {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+</style>
+
+<script>
+  function filterArticles(category) {
+    // 获取所有文章
+    const articles = document.querySelectorAll(".article-item");
+    const formatArticles = Array.from(articles);
+
+    const filtedArticles = formatArticles.filter((article) => {
+      const tags = article.getAttribute("data-tags").split(",") || [];
+      return category === "全部" || tags.includes(category);
+    });
+
+    articles.forEach((article) => {
+      if (filtedArticles.includes(article)) {
+        (article as HTMLElement).style.display = "block";
+      } else {
+        (article as HTMLElement).style.display = "none";
+      }
+    });
+  }
+
+  function initializeFilter() {
+    const categoriesContainer = document.querySelector(".categories");
+
+    if (categoriesContainer) {
+      for (const children of categoriesContainer.children) {
+        children.addEventListener("click", () => {
+          filterArticles(children.textContent);
+        });
+      }
+    }
+
+    // 初始化时激活"全部"分类
+    filterArticles("全部");
+  }
+
+  document.addEventListener("DOMContentLoaded", initializeFilter);
+</script>
