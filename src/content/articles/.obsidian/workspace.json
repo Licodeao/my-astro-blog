@@ -1,0 +1,179 @@
+{
+  "main": {
+    "id": "73382bdd349b9712",
+    "type": "split",
+    "children": [
+      {
+        "id": "b042ea7a2b3e1288",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "478254eed668dc71",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "miniprogram/perf.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "perf"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3560071a92b2f68e",
+    "type": "split",
+    "children": [
+      {
+        "id": "fca7fdf3dc50deb6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "94071103be7f968c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "1209c0d4d405724d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "1c6cdbaef83d1d1c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "1677976f82410a0b",
+    "type": "split",
+    "children": [
+      {
+        "id": "1befc91615c92c1f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a77f6dca2381f986",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "miniprogram/perf.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "perf 的反向链接列表"
+            }
+          },
+          {
+            "id": "436cb91c08c3a2d7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "web3/1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "1 的出链列表"
+            }
+          },
+          {
+            "id": "4c491453d681da67",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "0ff3ed35704a6897",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "web3/1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "1 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "478254eed668dc71",
+  "lastOpenFiles": [
+    "miniprogram/Wifi-clock-in-WeChat-mini-program.md",
+    "miniprogram/perf.md",
+    "web3/1.md",
+    "vue/vnode-tree.md",
+    "algorithm/剑指offer-3-数组中重复的数字.md"
+  ]
+}
