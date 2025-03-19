@@ -17,6 +17,9 @@ if [ ! -d "$ARTICLE_DIR" ]; then
     exit 1
 fi
 
+echo -e "${GREEN}添加所有更改过的文件${NC}"
+git add -A
+
 process_files() {
   local dir="$1"
   for item in "$dir"/*; do
@@ -37,6 +40,10 @@ process_files() {
 
 process_files "$ARTICLE_DIR"
 
+echo -e "${BLUE}Git 状态:${NC}"
+git status
+
+echo -e "${GREEN}提交更改${NC}"
 git commit -m 'feat: update blog'
 
 git push origin master -f
