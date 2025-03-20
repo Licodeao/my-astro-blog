@@ -4,7 +4,6 @@ export async function POST({ request }) {
   try {
     // 从请求体获取数据
     const data = await request.json();
-
     const imageUrl = data.url;
 
     if (!imageUrl) {
@@ -20,8 +19,14 @@ export async function POST({ request }) {
       );
     }
 
-    // 简单返回测试数据
-    const signedUrl = getSignedUrl(imageUrl, 86400);
+    // 尝试生成签名URL，如果失败则使用原始URL
+    let signedUrl;
+    try {
+      signedUrl = getSignedUrl(imageUrl, 86400);
+    } catch (error) {
+      console.error("生成签名URL失败:", error);
+      signedUrl = imageUrl; // 降级使用原始URL
+    }
 
     return new Response(
       JSON.stringify({
@@ -35,7 +40,6 @@ export async function POST({ request }) {
     );
   } catch (error) {
     console.error("API 错误:", error);
-
     return new Response(
       JSON.stringify({
         error: error.message,

@@ -17,10 +17,19 @@ function checkOssEnv() {
     "OSS_BUCKET_NAME",
   ];
 
+  // 判断是否在浏览器环境
+  const isBrowser = typeof window !== "undefined";
+
+  // 如果是浏览器环境，跳过环境变量检查，依赖客户端脚本
+  if (isBrowser) {
+    return true;
+  }
+
   const missing = required.filter((key) => !import.meta.env[key]);
 
   if (missing.length > 0) {
-    console.error(`OSS 配置错误: 缺少环境变量 ${missing.join(", ")}`);
+    // 构建时只显示警告，不阻止构建
+    console.warn(`OSS 配置提示: 构建时缺少环境变量 ${missing.join(", ")}`);
     return false;
   }
 

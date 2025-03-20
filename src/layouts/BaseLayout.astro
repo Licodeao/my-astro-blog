@@ -68,8 +68,12 @@ const { title, description } = Astro.props;
         }
       }
 
-      // 页面加载完成后处理图片
-      document.addEventListener("DOMContentLoaded", processOssImages);
+      // 确保在DOM加载完成后执行
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", processOssImages);
+      } else {
+        processOssImages();
+      }
 
       // 监听 DOM 变化，处理动态加载的内容
       const observer = new MutationObserver((mutations) => {
