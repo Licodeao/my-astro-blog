@@ -27,6 +27,5 @@ tags:
 我在 Google 随便搜了下测试蓝思值的网站，发现了个[「火箭猫」](https://assessment.huojianmao.com/entry)可以测。不过不是网站直接测试，需要在微信客户端里才能测试。我测完结果如下：
 
 ![IMG_7119](https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/IMG_7119.PNG)
-<img src="https://typora-licodeao.oss-cn-guangzhou.aliyuncs.com/typoraImg/IMG_7119.PNG?OSSAccessKeyId=LTAI5tBVK8ZHB6Hoye5EqgSr&amp;Expires=1742571102&amp;Signature=EX2gw2fmakfS4kR69J2kjKRjpYk%3D" alt="IMG_7119">
 
 看来英语的学习还是道阻且长啊 😁

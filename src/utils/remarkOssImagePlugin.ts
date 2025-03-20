@@ -10,6 +10,7 @@ import { getSignedUrl } from "./ossClient";
 export function remarkOssImagePlugin() {
   return (tree) => {
     visit(tree, "image", (node) => {
+      console.log("node", node);
       // 检查是否是 OSS 图片
       if (
         node.url &&

@@ -39,7 +39,11 @@ const { title, description } = Astro.props;
           const src = img.src;
 
           // 检查是否是 OSS 图片
-          if (src && (src.includes("aliyuncs.com") || src.includes("oss-cn"))) {
+          if (
+            src &&
+            (src.includes("aliyuncs.com") || src.includes("oss-cn")) &&
+            !src.includes("OSSAccessKeyId")
+          ) {
             try {
               // 使用 POST 请求
               const response = await fetch("/api/image", {
@@ -56,14 +60,6 @@ const { title, description } = Astro.props;
                 if (data.signed) {
                   img.src = data.signed;
                 }
-              } else {
-                console.error("API 返回错误状态:", response.status);
-                try {
-                  const errorData = await response.json();
-                  console.error("错误详情:", errorData);
-                } catch (e) {
-                  console.error("无法解析错误响应");
-                }
               }
             } catch (error) {
               console.error("处理图片失败:", error);
@@ -74,6 +70,31 @@ const { title, description } = Astro.props;
 
       // 页面加载完成后处理图片
       document.addEventListener("DOMContentLoaded", processOssImages);
+
+      // 监听 DOM 变化，处理动态加载的内容
+      const observer = new MutationObserver((mutations) => {
+        let hasNewImages = false;
+
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (
+              node.nodeName === "IMG" ||
+              (node.nodeType === 1 && (node as Element).querySelector("img"))
+            ) {
+              hasNewImages = true;
+            }
+          });
+        });
+
+        if (hasNewImages) {
+          processOssImages();
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
     </script>
 
     <style>
