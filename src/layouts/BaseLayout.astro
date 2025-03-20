@@ -26,8 +26,8 @@ const { title, description } = Astro.props;
       <Footer />
     </div>
 
-    <script>
-      // Add “loaded” class once the document has completely loaded.
+    <script is:inline>
+      // Add "loaded" class once the document has completely loaded.
       addEventListener("load", () =>
         document.documentElement.classList.add("loaded")
       );
@@ -79,7 +79,9 @@ const { title, description } = Astro.props;
           mutation.addedNodes.forEach((node) => {
             if (
               node.nodeName === "IMG" ||
-              (node.nodeType === 1 && (node as Element).querySelector("img"))
+              (node.nodeType === 1 &&
+                node.querySelector &&
+                node.querySelector("img"))
             ) {
               hasNewImages = true;
             }
