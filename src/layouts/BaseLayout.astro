@@ -31,6 +31,49 @@ const { title, description } = Astro.props;
       addEventListener("load", () =>
         document.documentElement.classList.add("loaded")
       );
+
+      async function processOssImages() {
+        const images = document.querySelectorAll("img");
+
+        for (const img of images) {
+          const src = img.src;
+
+          // 检查是否是 OSS 图片
+          if (src && (src.includes("aliyuncs.com") || src.includes("oss-cn"))) {
+            try {
+              // 使用 POST 请求
+              const response = await fetch("/api/image", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ url: src }),
+              });
+
+              if (response.ok) {
+                const data = await response.json();
+
+                if (data.signed) {
+                  img.src = data.signed;
+                }
+              } else {
+                console.error("API 返回错误状态:", response.status);
+                try {
+                  const errorData = await response.json();
+                  console.error("错误详情:", errorData);
+                } catch (e) {
+                  console.error("无法解析错误响应");
+                }
+              }
+            } catch (error) {
+              console.error("处理图片失败:", error);
+            }
+          }
+        }
+      }
+
+      // 页面加载完成后处理图片
+      document.addEventListener("DOMContentLoaded", processOssImages);
     </script>
 
     <style>

@@ -1,0 +1,36 @@
+---
+// 在服务器端，我们直接使用 ossImageUrl 工具
+import { getSignedImageUrl } from "../utils/ossImageUrl";
+
+// 定义组件属性
+interface Props {
+  src: string;
+  alt?: string;
+  width?: string | number;
+  height?: string | number;
+  class?: string;
+  [key: string]: any; // 支持其他属性传递
+}
+
+// 解构获取组件参数
+const {
+  src,
+  alt = "",
+  width,
+  height,
+  class: className,
+  ...props
+} = Astro.props;
+
+// 在服务器端直接获取签名 URL
+const signedSrc = getSignedImageUrl(src);
+---
+
+<img
+  src={signedSrc}
+  alt={alt}
+  width={width}
+  height={height}
+  class={className}
+  {...props}
+/>
