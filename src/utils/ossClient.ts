@@ -6,6 +6,25 @@ import OSS from "ali-oss";
 let client: OSS | null = null;
 
 /**
+ * 获取环境变量
+ * @param {string} key - 环境变量名
+ * @returns {string|undefined} - 环境变量值
+ */
+function getEnvVar(key) {
+  // 生产环境使用 process.env
+  if (process.env && process.env[key]) {
+    return process.env[key];
+  }
+
+  // 开发环境使用 import.meta.env
+  if (import.meta.env && import.meta.env[key]) {
+    return import.meta.env[key];
+  }
+
+  return undefined;
+}
+
+/**
  * 检查 OSS 环境变量是否配置
  * @returns 是否配置了所有必需的环境变量
  */
@@ -17,19 +36,10 @@ function checkOssEnv() {
     "OSS_BUCKET_NAME",
   ];
 
-  // 判断是否在浏览器环境
-  const isBrowser = typeof window !== "undefined";
-
-  // 如果是浏览器环境，跳过环境变量检查，依赖客户端脚本
-  if (isBrowser) {
-    return true;
-  }
-
-  const missing = required.filter((key) => !import.meta.env[key]);
+  const missing = required.filter((key) => !getEnvVar(key));
 
   if (missing.length > 0) {
-    // 构建时只显示警告，不阻止构建
-    console.warn(`OSS 配置提示: 构建时缺少环境变量 ${missing.join(", ")}`);
+    console.error(`OSS 配置错误: 缺少环境变量 ${missing.join(", ")}`);
     return false;
   }
 
@@ -55,11 +65,11 @@ export function getOssClient() {
 
   try {
     client = new OSS({
-      region: import.meta.env.OSS_REGION,
-      accessKeyId: import.meta.env.OSS_ACCESS_KEY_ID,
-      accessKeySecret: import.meta.env.OSS_ACCESS_KEY_SECRET,
-      bucket: import.meta.env.OSS_BUCKET_NAME,
-      secure: true, // 使用 HTTPS
+      region: getEnvVar("OSS_REGION"),
+      accessKeyId: getEnvVar("OSS_ACCESS_KEY_ID"),
+      accessKeySecret: getEnvVar("OSS_ACCESS_KEY_SECRET"),
+      bucket: getEnvVar("OSS_BUCKET_NAME"),
+      secure: true,
       authorizationV4: true,
     });
 
