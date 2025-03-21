@@ -1,8 +1,4 @@
 ---
-// Learn about using Astro layouts:
-// https://docs.astro.build/en/core-concepts/layouts/
-
-// Component Imports
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -27,7 +23,6 @@ const { title, description } = Astro.props;
     </div>
 
     <script is:inline>
-      // Add "loaded" class once the document has completely loaded.
       addEventListener("load", () =>
         document.documentElement.classList.add("loaded")
       );
@@ -38,14 +33,12 @@ const { title, description } = Astro.props;
         for (const img of images) {
           const src = img.src;
 
-          // 检查是否是 OSS 图片
           if (
             src &&
             (src.includes("aliyuncs.com") || src.includes("oss-cn")) &&
             !src.includes("OSSAccessKeyId")
           ) {
             try {
-              // 使用 POST 请求
               const response = await fetch("/api/image", {
                 method: "POST",
                 headers: {
@@ -68,14 +61,12 @@ const { title, description } = Astro.props;
         }
       }
 
-      // 确保在DOM加载完成后执行
       if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", processOssImages);
       } else {
         processOssImages();
       }
 
-      // 监听 DOM 变化，处理动态加载的内容
       const observer = new MutationObserver((mutations) => {
         let hasNewImages = false;
 

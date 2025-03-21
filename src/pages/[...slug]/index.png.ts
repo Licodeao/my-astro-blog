@@ -5,7 +5,6 @@ import type { APIRoute, GetStaticPaths, GetStaticPathsItem } from "astro";
 export const getStaticPaths: GetStaticPaths = async () => {
   const result: GetStaticPathsItem[] = [];
 
-  // blog
   const blogs = await getCollection("articles");
 
   blogs.forEach((blog) =>

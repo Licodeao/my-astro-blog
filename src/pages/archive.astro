@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import Pill from "../components/Pill.astro";
-import type { string } from "astro/zod";
 import { formatDate } from "../utils/padZero";
 
 const articles = await getCollection("articles");
@@ -15,14 +14,14 @@ const allCategories = [
 
 const articlesByYear = {};
 
-articles.forEach((airticle) => {
-  const publishYear = new Date(airticle.data.publishDate).getFullYear();
+articles.forEach((article) => {
+  const publishYear = new Date(article.data.publishDate).getFullYear();
 
   if (!articlesByYear[publishYear]) {
     articlesByYear[publishYear] = [];
   }
 
-  articlesByYear[publishYear].push(airticle);
+  articlesByYear[publishYear].push(article);
 });
 
 const articlesByYearArray = Object.entries(articlesByYear).reverse();
@@ -33,25 +32,30 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
     <main class="wrapper stack gap-8">
       <Hero title="归档" tagline="留下时光的痕迹。" align="start" />
 
-      <div class="categories roles">
-        {allCategories.map((category) => <Pill>{category}</Pill>)}
+      <div class="categories roles" id="categories-container">
+        {
+          allCategories.map((category) => (
+            <button class="category-btn" data-category={category}>
+              <Pill>{category}</Pill>
+            </button>
+          ))
+        }
       </div>
 
       <ul style="padding:0 !important; list-style:none;" id="articles-list">
         {
-          articlesByYearArray.map(([key, value]: [string, any]) => (
+          articlesByYearArray.map(([year, yearArticles]: [string, any]) => (
             <>
-              <h2>{key}</h2>
-              {value
+              <h2>{year}</h2>
+              {yearArticles
                 .sort((a, b) => b.data.publishDate - a.data.publishDate)
                 .map((article) => (
                   <li
-                    style="margin: 10px 0;"
                     class="article-item"
-                    data-tags={article.data.categories}
+                    data-categories={article.data.categories}
                   >
-                    <div style="display:flex; just-content:space-around; align-items:center; gap:10px;">
-                      <span style="width:100px;background: linear-gradient(-45deg,#7635B5 60%, #fff 100%); border-radius:5px;text-align:center; color:#fff;">
+                    <div class="article-row">
+                      <span class="date-badge">
                         {formatDate(new Date(article.data.publishDate))}
                       </span>
                       <a href={`/articles/${article.slug}`}>
@@ -75,49 +79,195 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
     gap: 0.5rem;
   }
 
+  .category-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    min-width: 80px;
+    text-align: center;
+  }
+
+  .category-btn :global(.pill) {
+    min-width: 60px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+  }
+
+  .category-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .category-btn.active :global(a) {
+    background-color: var(--accent);
+    color: white;
+  }
+
+  .article-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+    width: 100%;
+  }
+
+  .date-badge {
+    min-width: 100px;
+    flex-shrink: 0;
+    background: linear-gradient(-45deg, #7635b5 60%, #fff 100%);
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    padding: 4px 8px;
+  }
+
+  .article-row a {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--text-md);
+    transition: color 0.2s ease;
+  }
+
+  .article-row a:hover {
+    color: var(--accent);
+  }
+
   @media (min-width: 50em) {
     .roles {
       margin-top: 0.5rem;
       display: flex;
       gap: 0.5rem;
     }
+
+    .article-row {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 30em) {
+    .article-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .date-badge {
+      width: 100px;
+    }
   }
 </style>
 
-<script>
-  function filterArticles(category) {
-    // 获取所有文章
-    const articles = document.querySelectorAll(".article-item");
-    const formatArticles = Array.from(articles);
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    setupCategoryFilters();
+  });
 
-    const filtedArticles = formatArticles.filter((article) => {
-      const tags = article.getAttribute("data-tags").split(",") || [];
-      return category === "全部" || tags.includes(category);
+  /**
+   * 设置分类过滤功能
+   */
+  function setupCategoryFilters() {
+    const categoryButtons = document.querySelectorAll(".category-btn");
+
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+        filterArticles(category);
+        updateActiveButton(this);
+      });
+    });
+
+    const allCategoryBtn = document.querySelector(
+      '.category-btn[data-category="全部"]'
+    );
+    if (allCategoryBtn) {
+      allCategoryBtn.classList.add("active");
+      filterArticles("全部");
+    }
+  }
+
+  /**
+   * 根据分类筛选文章
+   */
+  function filterArticles(category) {
+    console.log(`筛选分类: ${category}`);
+    const articles = document.querySelectorAll(".article-item");
+
+    document
+      .querySelectorAll(".no-articles-message")
+      .forEach((msg) => msg.remove());
+
+    const yearHeadings = document.querySelectorAll("#articles-list > h2");
+
+    const yearHasArticles = {};
+    yearHeadings.forEach((heading) => {
+      yearHasArticles[heading.textContent] = false;
     });
 
     articles.forEach((article) => {
-      if (filtedArticles.includes(article)) {
-        (article as HTMLElement).style.display = "block";
+      const categoriesAttr = article.getAttribute("data-categories");
+      const categories = categoriesAttr ? categoriesAttr.split(",") : [];
+      const yearHeading = article.closest("li").previousElementSibling;
+      let year = "";
+
+      let el = article;
+      while (el) {
+        if (
+          el.previousElementSibling &&
+          el.previousElementSibling.tagName === "H2"
+        ) {
+          year = el.previousElementSibling.textContent;
+          break;
+        }
+        el = el.previousElementSibling;
+      }
+
+      if (category === "全部" || categories.includes(category)) {
+        article.setAttribute("style", "display: block");
+        if (year) yearHasArticles[year] = true;
       } else {
-        (article as HTMLElement).style.display = "none";
+        article.setAttribute("style", "display: none");
+      }
+    });
+
+    yearHeadings.forEach((heading) => {
+      const year = heading.textContent;
+
+      if (!yearHasArticles[year]) {
+        const message = document.createElement("li");
+        message.className = "no-articles-message";
+        message.textContent = `该年份下没有「${category}」分类的文章`;
+        message.style.color = "var(--gray-300)";
+        message.style.fontStyle = "italic";
+        message.style.padding = "0.5rem 0";
+
+        let nextElement = heading.nextElementSibling;
+        while (nextElement && nextElement.tagName !== "H2") {
+          if (
+            nextElement.classList.contains("article-item") &&
+            nextElement.getAttribute("style") === "display: none"
+          ) {
+            nextElement = nextElement.nextElementSibling;
+          } else {
+            break;
+          }
+        }
+
+        heading.after(message);
       }
     });
   }
 
-  function initializeFilter() {
-    const categoriesContainer = document.querySelector(".categories");
-
-    if (categoriesContainer) {
-      for (const children of categoriesContainer.children) {
-        children.addEventListener("click", () => {
-          filterArticles(children.textContent);
-        });
-      }
-    }
-
-    // 初始化时激活"全部"分类
-    filterArticles("全部");
+  /**
+   * 更新活动按钮状态
+   */
+  function updateActiveButton(activeButton) {
+    const buttons = document.querySelectorAll(".category-btn");
+    buttons.forEach((btn) => btn.classList.remove("active"));
+    activeButton.classList.add("active");
   }
-
-  document.addEventListener("DOMContentLoaded", initializeFilter);
 </script>

@@ -2,7 +2,6 @@ import { getSignedUrl } from "../../utils/ossClient";
 
 export async function POST({ request }) {
   try {
-    // 从请求体获取数据
     const data = await request.json();
     const imageUrl = data.url;
 
@@ -19,13 +18,12 @@ export async function POST({ request }) {
       );
     }
 
-    // 尝试生成签名URL，如果失败则使用原始URL
     let signedUrl;
     try {
       signedUrl = getSignedUrl(imageUrl, 86400);
     } catch (error) {
       console.error("生成签名URL失败:", error);
-      signedUrl = imageUrl; // 降级使用原始URL
+      signedUrl = imageUrl;
     }
 
     return new Response(

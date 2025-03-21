@@ -82,10 +82,8 @@ import Icon from "./Icon.astro";
         button.setAttribute("aria-pressed", String(dark));
       };
 
-      // Toggle the theme when a user clicks the button.
       button.addEventListener("click", () => setTheme(!this.isDark()));
 
-      // Initialize button state to reflect current theme.
       setTheme(this.isDark());
     }
 
