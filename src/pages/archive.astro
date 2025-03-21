@@ -163,111 +163,112 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
 </style>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    setupCategoryFilters();
-  });
-
-  /**
-   * 设置分类过滤功能
-   */
-  function setupCategoryFilters() {
-    const categoryButtons = document.querySelectorAll(".category-btn");
-
-    categoryButtons.forEach((button) => {
-      button.addEventListener("click", function () {
-        const category = this.getAttribute("data-category");
-        filterArticles(category);
-        updateActiveButton(this);
-      });
-    });
-
-    const allCategoryBtn = document.querySelector(
-      '.category-btn[data-category="全部"]'
-    );
-    if (allCategoryBtn) {
-      allCategoryBtn.classList.add("active");
-      filterArticles("全部");
+  (function () {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeFilters);
+    } else {
+      initializeFilters();
     }
-  }
 
-  /**
-   * 根据分类筛选文章
-   */
-  function filterArticles(category) {
-    console.log(`筛选分类: ${category}`);
-    const articles = document.querySelectorAll(".article-item");
+    window.addEventListener("load", initializeFilters);
 
-    document
-      .querySelectorAll(".no-articles-message")
-      .forEach((msg) => msg.remove());
-
-    const yearHeadings = document.querySelectorAll("#articles-list > h2");
-
-    const yearHasArticles = {};
-    yearHeadings.forEach((heading) => {
-      yearHasArticles[heading.textContent] = false;
-    });
-
-    articles.forEach((article) => {
-      const categoriesAttr = article.getAttribute("data-categories");
-      const categories = categoriesAttr ? categoriesAttr.split(",") : [];
-      const yearHeading = article.closest("li").previousElementSibling;
-      let year = "";
-
-      let el = article;
-      while (el) {
-        if (
-          el.previousElementSibling &&
-          el.previousElementSibling.tagName === "H2"
-        ) {
-          year = el.previousElementSibling.textContent;
-          break;
-        }
-        el = el.previousElementSibling;
+    function initializeFilters() {
+      if (document.querySelector(".category-btn.active")) {
+        return;
       }
 
-      if (category === "全部" || categories.includes(category)) {
-        article.setAttribute("style", "display: block");
-        if (year) yearHasArticles[year] = true;
-      } else {
-        article.setAttribute("style", "display: none");
+      console.log("初始化分类过滤功能");
+      setupCategoryFilters();
+    }
+
+    function setupCategoryFilters() {
+      const categoryButtons = document.querySelectorAll(".category-btn");
+
+      categoryButtons.forEach((button) => {
+        button.removeEventListener("click", categoryClickHandler);
+
+        button.addEventListener("click", categoryClickHandler);
+      });
+
+      const allCategoryBtn = document.querySelector(
+        '.category-btn[data-category="全部"]'
+      );
+      if (allCategoryBtn) {
+        allCategoryBtn.classList.add("active");
+        filterArticles("全部");
       }
-    });
+    }
 
-    yearHeadings.forEach((heading) => {
-      const year = heading.textContent;
+    function categoryClickHandler() {
+      console.log("分类按钮被点击");
+      const category = this.getAttribute("data-category");
+      filterArticles(category);
+      updateActiveButton(this);
+    }
 
-      if (!yearHasArticles[year]) {
-        const message = document.createElement("li");
-        message.className = "no-articles-message";
-        message.textContent = `该年份下没有「${category}」分类的文章`;
-        message.style.color = "var(--gray-300)";
-        message.style.fontStyle = "italic";
-        message.style.padding = "0.5rem 0";
+    function filterArticles(category) {
+      console.log(`筛选分类: ${category}`);
+      const articles = document.querySelectorAll(".article-item");
 
-        let nextElement = heading.nextElementSibling;
-        while (nextElement && nextElement.tagName !== "H2") {
+      document
+        .querySelectorAll(".no-articles-message")
+        .forEach((msg) => msg.remove());
+
+      const yearHeadings = document.querySelectorAll("#articles-list > h2");
+
+      const yearHasArticles = {};
+      yearHeadings.forEach((heading) => {
+        yearHasArticles[heading.textContent] = false;
+      });
+
+      articles.forEach((article) => {
+        const categoriesAttr = article.getAttribute("data-categories");
+        const categories = categoriesAttr ? categoriesAttr.split(",") : [];
+        let year = "";
+
+        let el = article;
+        while (el) {
           if (
-            nextElement.classList.contains("article-item") &&
-            nextElement.getAttribute("style") === "display: none"
+            el.previousElementSibling &&
+            el.previousElementSibling.tagName === "H2"
           ) {
-            nextElement = nextElement.nextElementSibling;
-          } else {
+            year = el.previousElementSibling.textContent;
             break;
           }
+          el = el.previousElementSibling;
         }
 
-        heading.after(message);
-      }
-    });
-  }
+        if (category === "全部" || categories.includes(category)) {
+          article.style.display = "block";
+          if (year) yearHasArticles[year] = true;
+        } else {
+          article.style.display = "block";
+          setTimeout(() => {
+            article.style.display = "none";
+          }, 10);
+        }
+      });
 
-  /**
-   * 更新活动按钮状态
-   */
-  function updateActiveButton(activeButton) {
-    const buttons = document.querySelectorAll(".category-btn");
-    buttons.forEach((btn) => btn.classList.remove("active"));
-    activeButton.classList.add("active");
-  }
+      yearHeadings.forEach((heading) => {
+        const year = heading.textContent;
+
+        if (!yearHasArticles[year]) {
+          const message = document.createElement("li");
+          message.className = "no-articles-message";
+          message.textContent = `该年份下没有「${category}」分类的文章`;
+          message.style.color = "var(--gray-300)";
+          message.style.fontStyle = "italic";
+          message.style.padding = "0.5rem 0";
+
+          heading.after(message);
+        }
+      });
+    }
+
+    function updateActiveButton(activeButton) {
+      const buttons = document.querySelectorAll(".category-btn");
+      buttons.forEach((btn) => btn.classList.remove("active"));
+      activeButton.classList.add("active");
+    }
+  })();
 </script>
