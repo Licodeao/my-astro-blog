@@ -81,7 +81,7 @@ export function getOssClient() {
  * @param {number} expires - 过期时间（秒）
  * @returns {string} 签名后的 URL
  */
-export function getSignedUrl(url: string, expires = 3600) {
+export function getSignedUrl(url: string, expires = 604800) {
   try {
     if (!url || (!url.includes("aliyuncs.com") && !url.includes("oss-cn"))) {
       return url;
@@ -102,13 +102,6 @@ export function getSignedUrl(url: string, expires = 3600) {
 
       if (objectPath.startsWith("/")) {
         objectPath = objectPath.substring(1);
-      }
-
-      const bucket = import.meta.env.OSS_BUCKET_NAME;
-      if (urlObj.hostname.includes(bucket)) {
-        const parts = urlObj.hostname.split(".");
-        if (parts[0] === bucket) {
-        }
       }
     }
 

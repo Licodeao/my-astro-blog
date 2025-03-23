@@ -27,6 +27,32 @@ const { title, description } = Astro.props;
         document.documentElement.classList.add("loaded")
       );
 
+      /**
+       * 检查图片URL是否过期
+       * @param {string} url - 图片URL
+       * @returns {boolean} - 是否过期
+       */
+      function isUrlExpired(url) {
+        if (!url || !url.includes("Expires=")) {
+          return false;
+        }
+
+        try {
+          const expiresMatch = url.match(/Expires=(\d+)/);
+          if (expiresMatch && expiresMatch[1]) {
+            const expiresTimestamp = parseInt(expiresMatch[1], 10) * 1000;
+            const currentTime = new Date().getTime();
+
+            // 如果过期时间小于当前时间或即将过期（1小时内），则认为已过期
+            return expiresTimestamp - currentTime < 3600000;
+          }
+        } catch (error) {
+          console.error("检查URL过期时间出错:", error);
+        }
+
+        return false;
+      }
+
       async function processOssImages() {
         const images = document.querySelectorAll("img");
 
@@ -35,8 +61,11 @@ const { title, description } = Astro.props;
 
           if (
             src &&
-            (src.includes("aliyuncs.com") || src.includes("oss-cn")) &&
-            !src.includes("OSSAccessKeyId")
+            (((src.includes("aliyuncs.com") || src.includes("oss-cn")) &&
+              !src.includes("OSSAccessKeyId")) ||
+              ((src.includes("aliyuncs.com") || src.includes("oss-cn")) &&
+                src.includes("OSSAccessKeyId") &&
+                isUrlExpired(src)))
           ) {
             try {
               const response = await fetch("/api/image", {
@@ -44,7 +73,7 @@ const { title, description } = Astro.props;
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ url: src }),
+                body: JSON.stringify({ url: src.split("?")[0] }),
               });
 
               if (response.ok) {
@@ -61,11 +90,9 @@ const { title, description } = Astro.props;
         }
       }
 
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", processOssImages);
-      } else {
-        processOssImages();
-      }
+      document.addEventListener("DOMContentLoaded", processOssImages);
+
+      setInterval(processOssImages, 3600000);
 
       const observer = new MutationObserver((mutations) => {
         let hasNewImages = false;

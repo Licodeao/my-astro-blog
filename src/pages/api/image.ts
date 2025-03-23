@@ -18,13 +18,7 @@ export async function POST({ request }) {
       );
     }
 
-    let signedUrl;
-    try {
-      signedUrl = getSignedUrl(imageUrl, 86400);
-    } catch (error) {
-      console.error("生成签名URL失败:", error);
-      signedUrl = imageUrl;
-    }
+    const signedUrl = getSignedUrl(imageUrl, 604800);
 
     return new Response(
       JSON.stringify({

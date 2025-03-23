@@ -15,7 +15,7 @@ export function remarkOssImagePlugin() {
         (node.url.includes("aliyuncs.com") || node.url.includes("oss-cn"))
       ) {
         try {
-          const signedUrl = getSignedUrl(node.url, 86400);
+          const signedUrl = getSignedUrl(node.url, 2592000);
           if (signedUrl && signedUrl !== node.url) {
             node.url = signedUrl;
           }
