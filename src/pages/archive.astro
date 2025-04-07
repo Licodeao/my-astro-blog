@@ -25,6 +25,30 @@ articles.forEach((article) => {
 });
 
 const articlesByYearArray = Object.entries(articlesByYear).reverse();
+
+function formatMonthDay(date) {
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${month}-${day}`;
+}
+
+function formatGitHubPath(slug) {
+  const replacements = {
+    essaylife: "essay&life",
+    "react-": "react&",
+    "vue-": "vue&",
+    "js-": "js&",
+  };
+
+  let formattedSlug = slug;
+  for (const [pattern, replacement] of Object.entries(replacements)) {
+    if (formattedSlug.includes(pattern)) {
+      formattedSlug = formattedSlug.replace(pattern, replacement);
+    }
+  }
+
+  return formattedSlug;
+}
 ---
 
 <BaseLayout title="归档" description="Articles Archiving">
@@ -42,32 +66,73 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
         }
       </div>
 
-      <ul style="padding:0 !important; list-style:none;" id="articles-list">
+      <div class="archive-container">
         {
           articlesByYearArray.map(([year, yearArticles]: [string, any]) => (
-            <>
-              <h2>{year}</h2>
-              {yearArticles
-                .sort((a, b) => b.data.publishDate - a.data.publishDate)
-                .map((article) => (
-                  <li
-                    class="article-item"
-                    data-categories={article.data.categories}
-                  >
-                    <div class="article-row">
-                      <span class="date-badge">
-                        {formatDate(new Date(article.data.publishDate))}
-                      </span>
-                      <a href={`/articles/${article.slug}`}>
-                        {article.data.title}
-                      </a>
-                    </div>
-                  </li>
-                ))}
-            </>
+            <div class="year-section">
+              <div class="year-header">
+                <h2>{year}</h2>
+                <div class="article-count">{yearArticles.length} 文章</div>
+              </div>
+
+              <div class="articles-list">
+                {yearArticles
+                  .sort((a, b) => b.data.publishDate - a.data.publishDate)
+                  .map((article) => {
+                    const publishDate = new Date(article.data.publishDate);
+                    const gitHubPath = formatGitHubPath(article.slug);
+                    return (
+                      <div
+                        class="article-item"
+                        data-categories={article.data.categories}
+                      >
+                        <div class="date-col">
+                          {formatMonthDay(publishDate)}
+                        </div>
+                        <div class="dot-line">
+                          <div class="dot" />
+                          <div class="line" />
+                        </div>
+                        <div class="title-col">
+                          <a href={`/articles/${article.slug}`}>
+                            {article.data.title}
+                          </a>
+                          <div class="action-icons">
+                            <a
+                              href={`/articles/${article.slug}`}
+                              class="icon view-icon"
+                              title="查看文章"
+                            >
+                              <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path
+                                  fill="currentColor"
+                                  d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                                />
+                              </svg>
+                            </a>
+                            <a
+                              href={`https://github.com/Licodeao/my-astro-blog/blob/master/src/content/articles/${gitHubPath}.md`}
+                              class="icon github-icon"
+                              target="_blank"
+                              title="查看源码"
+                            >
+                              <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path
+                                  fill="currentColor"
+                                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                                />
+                              </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
           ))
         }
-      </ul>
+      </div>
     </main>
   </div>
 </BaseLayout>
@@ -77,6 +142,7 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-bottom: 2rem;
   }
 
   .category-btn {
@@ -106,35 +172,174 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
     color: white;
   }
 
-  .article-row {
+  .archive-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .year-section {
+    padding-bottom: 1rem;
+  }
+
+  .year-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin: 15px 0;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .year-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--accent-regular);
+    position: relative;
+    display: inline-block;
+  }
+
+  .year-header h2::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
     width: 100%;
+    height: 3px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
   }
 
-  .date-badge {
-    min-width: 100px;
-    flex-shrink: 0;
-    background: linear-gradient(-45deg, #7635b5 60%, #fff 100%);
-    border-radius: 5px;
-    text-align: center;
-    color: #fff;
-    padding: 4px 8px;
+  .article-count {
+    font-size: 0.9rem;
+    color: var(--gray-0);
+    background: var(--accent-overlay);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 500;
   }
 
-  .article-row a {
-    flex-grow: 1;
+  .articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .article-item {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .date-col {
+    flex: 0 0 60px;
+    font-size: 0.9rem;
+    color: var(--accent-regular);
+    font-weight: 600;
+    text-align: right;
+    padding-top: 0.25rem;
+    transition: transform 0.2s ease;
+  }
+
+  .article-item:hover .date-col {
+    transform: translateX(-3px);
+    color: var(--accent-light);
+  }
+
+  .dot-line {
+    flex: 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin: 0 0.5rem;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--gradient-accent);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .article-item:hover .dot {
+    transform: scale(1.5);
+    box-shadow: 0 0 8px var(--accent-light);
+  }
+
+  .line {
+    position: absolute;
+    top: 0.75rem;
+    width: 1px;
+    height: calc(100% + 1.25rem);
+    background: linear-gradient(
+      to bottom,
+      var(--accent-light) 0%,
+      var(--gray-300) 100%
+    );
+    z-index: -1;
+  }
+
+  .article-item:last-child .line {
+    display: none;
+  }
+
+  .title-col {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.15rem;
+  }
+
+  .title-col a {
+    font-size: var(--text-md);
+    color: var(--gray-600);
+    text-decoration: none;
+    transition:
+      color 0.2s,
+      transform 0.2s;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: var(--text-md);
-    transition: color 0.2s ease;
+    position: relative;
+    padding-left: 0;
   }
 
-  .article-row a:hover {
-    color: var(--accent);
+  .title-col a:hover {
+    color: var(--accent-regular);
+    transform: translateX(3px);
+  }
+
+  .action-icons {
+    display: flex;
+    gap: 0.75rem;
+    margin-left: 1rem;
+    opacity: 0;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
+  }
+
+  .article-item:hover .action-icons {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .icon {
+    color: var(--gray-400);
+    transition:
+      color 0.2s,
+      transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon:hover {
+    color: var(--accent-light);
+    transform: scale(1.2);
   }
 
   @media (min-width: 50em) {
@@ -143,21 +348,26 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
       display: flex;
       gap: 0.5rem;
     }
+  }
 
-    .article-row {
-      max-width: 90%;
+  @media (max-width: 768px) {
+    .date-col {
+      flex: 0 0 50px;
+      font-size: 0.85rem;
+    }
+
+    .dot-line {
+      flex: 0 0 20px;
     }
   }
 
   @media (max-width: 30em) {
-    .article-row {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
+    .action-icons {
+      display: none;
     }
 
-    .date-badge {
-      width: 100px;
+    .title-col a {
+      font-size: var(--text-sm);
     }
   }
 </style>
@@ -179,6 +389,7 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
 
       console.log("初始化分类过滤功能");
       setupCategoryFilters();
+      setupVerticalLines();
     }
 
     function setupCategoryFilters() {
@@ -199,6 +410,18 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
       }
     }
 
+    function setupVerticalLines() {
+      const yearSections = document.querySelectorAll(".year-section");
+
+      yearSections.forEach((section) => {
+        const articles = section.querySelectorAll(".article-item");
+        if (articles.length > 0) {
+          const lastArticle = articles[articles.length - 1];
+          lastArticle.querySelector(".line").style.display = "none";
+        }
+      });
+    }
+
     function categoryClickHandler() {
       console.log("分类按钮被点击");
       const category = this.getAttribute("data-category");
@@ -214,11 +437,11 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
         .querySelectorAll(".no-articles-message")
         .forEach((msg) => msg.remove());
 
-      const yearHeadings = document.querySelectorAll("#articles-list > h2");
+      const yearSections = document.querySelectorAll(".year-section");
 
       const yearHasArticles = {};
-      yearHeadings.forEach((heading) => {
-        yearHasArticles[heading.textContent] = false;
+      yearSections.forEach((section) => {
+        yearHasArticles[section.querySelector("h2").textContent] = false;
       });
 
       articles.forEach((article) => {
@@ -226,41 +449,51 @@ const articlesByYearArray = Object.entries(articlesByYear).reverse();
         const categories = categoriesAttr ? categoriesAttr.split(",") : [];
         let year = "";
 
-        let el = article;
-        while (el) {
-          if (
-            el.previousElementSibling &&
-            el.previousElementSibling.tagName === "H2"
-          ) {
-            year = el.previousElementSibling.textContent;
-            break;
-          }
-          el = el.previousElementSibling;
+        let section = article.closest(".year-section");
+        if (section) {
+          year = section.querySelector("h2").textContent;
         }
 
         if (category === "全部" || categories.includes(category)) {
-          article.style.display = "block";
+          article.style.display = "flex";
           if (year) yearHasArticles[year] = true;
         } else {
-          article.style.display = "block";
-          setTimeout(() => {
-            article.style.display = "none";
-          }, 10);
+          article.style.display = "none";
         }
       });
 
-      yearHeadings.forEach((heading) => {
-        const year = heading.textContent;
+      // 处理筛选后的垂直线
+      yearSections.forEach((section) => {
+        const visibleArticles = Array.from(
+          section.querySelectorAll(".article-item")
+        ).filter((article) => article.style.display !== "none");
+
+        // 重置所有线
+        section.querySelectorAll(".line").forEach((line) => {
+          line.style.display = "block";
+        });
+
+        // 隐藏最后一个可见文章的线
+        if (visibleArticles.length > 0) {
+          const lastVisibleArticle =
+            visibleArticles[visibleArticles.length - 1];
+          lastVisibleArticle.querySelector(".line").style.display = "none";
+        }
+      });
+
+      yearSections.forEach((section) => {
+        const year = section.querySelector("h2").textContent;
 
         if (!yearHasArticles[year]) {
-          const message = document.createElement("li");
+          const message = document.createElement("div");
           message.className = "no-articles-message";
           message.textContent = `该年份下没有「${category}」分类的文章`;
           message.style.color = "var(--gray-300)";
           message.style.fontStyle = "italic";
-          message.style.padding = "0.5rem 0";
+          message.style.padding = "1rem 0";
+          message.style.marginLeft = "90px";
 
-          heading.after(message);
+          section.querySelector(".articles-list").appendChild(message);
         }
       });
     }
